@@ -304,7 +304,6 @@ textarea.custom-sec-ta::placeholder{color:#2A3350}
 </head>
 <body>
 
-<!-- ━━━ 비밀번호 잠금 화면 ━━━ -->
 <div id="lockScreen">
   <div class="lock-box">
     <div class="lock-logo">🔐</div>
@@ -377,7 +376,6 @@ function _lh(){
 </script>
 
 <aside id="sb">
-  <!-- API KEY -->
   <div class="apikey-wrap">
     <div class="provider-row">
       <button class="prov-btn gemini on" id="provGemini" onclick="setProvider('gemini')">🔵 Gemini (Google)</button>
@@ -404,7 +402,6 @@ function _lh(){
     <div class="sb-sub">컨셉별 프리미엄 랜딩페이지 생성기 v5</div>
   </div>
   <div class="sb-scroll">
-    <!-- USAGE GUIDE -->
     <div id="guidePanel" style="display:none;padding:10px 14px;border-bottom:1px solid #131720">
       <div class="guide-panel">
         <div class="guide-row"><span class="guide-icon">🎲</span><span class="guide-txt"><b>AI 랜덤 생성</b> — 25가지 무드 자동 선택, 배경사진까지 자동 매칭. 매번 다른 배색·폰트·CSS 구조</span></div>
@@ -426,7 +423,6 @@ function _lh(){
         </div>
       </div>
     </div>
-    <!-- CONCEPT -->
     <div class="sb-sec">
       <div class="sb-lbl">페이지 컨셉 <span id="custBadge" style="display:none;font-size:8px;background:linear-gradient(135deg,#FF6B35,#E84393);color:#fff;padding:1px 7px;border-radius:20px;font-weight:700">AI 생성됨</span></div>
       <div class="cg-tb">
@@ -452,7 +448,6 @@ function _lh(){
         <img id="upbgThumb" class="upbg-thumb" alt="배경 미리보기"/>
         <div style="font-size:8.5px;color:#3A4A60;margin-top:3px">업로드된 이미지는 히어로 배경에 직접 적용됩니다</div>
       </div>
-      <!-- 이미지 팔레트 추출 -->
       <div style="margin-top:6px">
         <div style="font-size:9px;font-weight:700;color:#6A7A9A;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;display:flex;align-items:center;gap:5px">🎨 이미지에서 컬러 추출 <span style="font-size:8px;color:#4A5A78;font-weight:400;text-transform:none;letter-spacing:0">로고·사진 업로드 → 자동 테마</span></div>
         <div class="pal-drop" id="palDrop" onclick="document.getElementById('palFile').click()" ondragover="palDragOver(event)" ondragleave="palDragLeave(event)" ondrop="palDrop(event)">
@@ -471,7 +466,6 @@ function _lh(){
         </div>
       </div>
     </div>
-    <!-- INSTRUCTOR -->
     <div class="sb-sec">
       <div class="sb-lbl">강사 정보 <span style="font-size:8px;color:#3A4A60;font-weight:400;text-transform:none;letter-spacing:0">— 선택사항 (없어도 문구 생성 가능)</span></div>
       <div class="inp-row" style="margin-bottom:5px">
@@ -484,7 +478,6 @@ function _lh(){
         <div id="instRows"></div>
       </div>
     </div>
-    <!-- PURPOSE -->
     <div class="sb-sec">
       <div class="sb-lbl">페이지 목적</div>
       <div class="trow">
@@ -495,7 +488,6 @@ function _lh(){
       <input class="inp" id="iPurpose" placeholder="강의 브랜드명 (예: ABPS 완성반, 2027 KISS Logic)" value="2026 수능 파이널 완성" oninput="S.purpose=this.value;refresh()"/>
       <div class="purpose-hint" id="phint"></div>
     </div>
-    <!-- TARGET -->
     <div class="sb-sec">
       <div class="sb-lbl">수강 대상</div>
       <div class="rg" id="rg">
@@ -503,7 +495,6 @@ function _lh(){
         <div class="ri" data-t="고1·2" onclick="setTarget('고1·2')"><div class="rd"></div><span class="rtxt">고1·2 — 기초 완성</span></div>
       </div>
     </div>
-    <!-- AI COPY -->
     <div class="sb-sec">
       <div class="sb-lbl">AI 맞춤 문구 <span class="aibadge">AI</span></div>
       <div class="copy-box" id="copyBox">
@@ -515,12 +506,10 @@ function _lh(){
         </div>
       </div>
     </div>
-    <!-- SECTIONS -->
     <div class="sb-sec" style="border-bottom:none">
       <div class="sb-lbl">섹션 구성</div>
       <div class="sort-hint">⠿ 드래그로 순서 변경 · 클릭으로 ON/OFF</div>
       <div class="sl" id="sl"></div>
-      <!-- CUSTOM SECTION -->
       <div style="margin-top:8px;padding-top:8px;border-top:1px solid #131720">
         <div class="si" id="customSecRow" style="cursor:pointer" onclick="toggleCustomSec()">
           <span class="sdrag">⠿</span>
@@ -541,7 +530,6 @@ function _lh(){
       </div>
     </div>
   </div>
-  <!-- 인라인 편집 패널 -->
   <div class="sb-sec" style="border-bottom:none;padding-bottom:0">
     <div class="sb-lbl" style="margin-bottom:6px">
       ✏️ 문구 직접 편집
@@ -555,7 +543,6 @@ function _lh(){
     </div>
   </div>
   <div class="sb-foot">
-    <!-- 저장/불러오기 -->
     <div style="margin-bottom:7px">
       <div class="saveload-row">
         <button class="sl-btn" onclick="saveStateLocal()" title="브라우저에 저장 (자동복구)">💾 저장<span class="autosave-dot" id="autosaveDot"></span></button>
@@ -566,13 +553,11 @@ function _lh(){
       </div>
       <div class="autosave-label" id="autosaveLabel"></div>
     </div>
-    <!-- 공유/내보내기 -->
     <div style="display:flex;gap:5px">
       <button class="share-btn" onclick="shareLink()" title="현재 상태를 URL로 공유">🔗 공유</button>
       <button class="share-btn" onclick="exportHTML()" style="background:linear-gradient(135deg,#FF6B35,#E84393);border-color:transparent;color:#fff;flex:2">📥 HTML 내보내기</button>
     </div>
   </div>
-  <!-- 토스트 -->
   <div class="share-toast" id="shareToast">✓ 완료</div>
 </aside>
 
@@ -592,7 +577,6 @@ function _lh(){
       <iframe id="pf" sandbox="allow-scripts allow-same-origin"></iframe>
     </div>
   </div>
-  <!-- A/B 비교 패널 -->
   <div id="pvwrap-ab">
     <div class="ab-panel">
       <div class="ab-label">
@@ -949,7 +933,7 @@ function secBanner(d,cp){
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:1px;min-width:200px;animation:up .8s .3s cubic-bezier(.16,1,.3,1) both">
-        ${stats.slice(0,3).map(([sv,sl],i)=>`<div style="padding:14px 18px;background:${i%2===0?'var(--bg2)':'var(--bg3)'};border:1px solid var(--bd)"><span style="font-family:var(--fh);font-size:clamp(20px,3vw,28px);font-weight:900;color:var(--c1)">${sv}</span><span style="font-size:9.5px;color:var(--t45);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-left:8px">${sl}</span></div>`).join('')}
+        ${stats.slice(0,3).map(([sv,sl],i)=>`<div style="padding:14px 18px;background:${i%2===0?'var(--bg2)':'var(--bg3)'};border:1px solid var(--bd)"><span style="font-family:var(--fh);font-size:clamp(20px,3vw,28px);font-weight:900;color:var(--c1)">${sv}</span><span style="font-size:9.5px;color:var(--t45);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-left:8px">${sl}</div>`).join('')}
       </div>
     </div>
   </div>
@@ -1140,7 +1124,7 @@ function secEventDeadline(d,cp){
   const T=getT();
   const msg=cp.deadlineMsg||`🌸 벚꽃처럼 짧고 귀한 이 혜택은 이벤트가 끝나면 사라집니다. 지금 바로 신청하세요.`;
   return `<section class="sec alt" id="event-deadline">
-  <div class="rv"><div class="tag-line">마감 안내</div><h2 class="sec-h2 st">${cp.deadlineTitle||'기간 한정 — 마감이 다가옵니다'}</h2></div>
+  <div class="rv"><div class="tag-line">마마감 안내</div><h2 class="sec-h2 st">${cp.deadlineTitle||'기간 한정 — 마감이 다가옵니다'}</h2></div>
   <div class="rv d1" style="background:${T.dark?'var(--bg3)':'var(--bg)'};border:1px solid var(--bd);border-radius:var(--r,16px);padding:clamp(28px,5vw,52px);display:flex;flex-direction:column;gap:20px;align-items:flex-start">
     <div style="font-size:15px;line-height:1.9;color:var(--t70)">${msg}</div>
     <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn-p" href="#">이벤트 바로 신청 →</a><a class="btn-s" href="#">이벤트 내용 더 보기</a></div>
@@ -1580,16 +1564,17 @@ async function callClaude(prompt, system, useSearch, maxTokens=3000){
   if(!apiKey) throw new Error('API 키가 없습니다. 좌측 상단에 API Key를 입력해주세요.');
   const provider=getProvider();
 
-  // JSON 강제 시스템 지시어
-  const JSON_ENFORCE = useSearch ? '' : '\n\nReturn strictly valid JSON only. Do not wrap in markdown blocks.';
+  // JSON 강제 시스템 지시어 (무료 모델 환각 방지)
+  const JSON_ENFORCE = useSearch ? '' : '\n\nReturn strictly valid JSON only. Do not wrap in markdown blocks. Do not add any text before or after the JSON object.';
 
-  // OpenRouter 무료 모델 우선순위
+  // OpenRouter 무료 모델 우선순위 배열 (최신→폴백 순)
   const OR_MODELS = [
-    'meta-llama/llama-3-8b-instruct:free',
-    'google/gemma-2-9b-it:free',
+    'google/gemini-2.0-flash-lite-preview-02-05:free',
+    'mistralai/mistral-7b-instruct:free',
+    'meta-llama/llama-3.2-3b-instruct:free',
   ];
 
-  // ── Gemini 호출 로직 ──
+  // ── Gemini 호출 내부 함수 ─────────────────────────────────
   async function _callGemini(){
     const model='gemini-2.0-flash';
     const url=`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
@@ -1597,72 +1582,100 @@ async function callClaude(prompt, system, useSearch, maxTokens=3000){
     if(!useSearch) body.generationConfig.responseMimeType='application/json';
     if(system) body.systemInstruction={parts:[{text:system+JSON_ENFORCE}]};
     else if(!useSearch) body.systemInstruction={parts:[{text:'Return only valid JSON.'+JSON_ENFORCE}]};
-    
+    if(useSearch) body.tools=[{googleSearch:{}}];
     let res;
-    try { 
-      res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}); 
-    } catch(err){ 
-      throw new Error('NETWORK_ERROR'); 
-    }
-    
-    if(!res.ok){
-      const d=await res.json().catch(()=>({}));
-      throw new Error(`HTTP ${res.status} (Gemini): ${d.error?.message||''}`);
-    }
-    const data=await res.json(); 
-    const candidate=data.candidates?.[0];
-    if(!candidate||!candidate.content||!candidate.content.parts){ 
-      throw new Error('Gemini 응답 형식 오류'); 
-    }
+    try{ res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}); }
+    catch(err){ throw new Error('NETWORK_ERROR'); }
+    if(res.status===429) throw new Error('429_GEMINI');
+    if(!res.ok){ const d=await res.json().catch(()=>({})); const m=d.error?.message||`HTTP ${res.status}`; if(res.status===400) throw new Error(`요청 오류: ${m}`); if(res.status===401||res.status===403) throw new Error('API 키 인증 실패 — Gemini 키를 확인해주세요'); throw new Error(m); }
+    const data=await res.json(); const candidate=data.candidates?.[0];
+    if(!candidate||!candidate.content||!candidate.content.parts){ if(candidate?.finishReason==='SAFETY') throw new Error('안전 필터 차단'); throw new Error('Gemini 응답 형식 오류'); }
     const textPart=candidate.content.parts.find(p=>typeof p.text==='string');
     if(!textPart) throw new Error('Gemini 응답에 텍스트가 없습니다.');
     return textPart.text;
   }
 
-  // ── OpenRouter 호출 로직 ──
+  // ── OpenRouter 호출 내부 함수 (모델 배열 순서대로 폴백) ───
   async function _callOpenRouter(){
     const messages=[];
     const sysContent=(system||'')+JSON_ENFORCE;
     if(sysContent.trim()) messages.push({role:'system',content:sysContent});
-    messages.push({role:'user',content:prompt});
-    
+    messages.push({role:'user',content:useSearch?prompt+'\n\n(If specific info unavailable, use plausible Korean education copy.)':prompt});
     let lastErr=null;
     for(const model of OR_MODELS){
       const reqBody={model,messages,max_tokens:maxTokens,temperature:0.7};
       if(!useSearch) reqBody.response_format={type:'json_object'};
-      
       let orRes;
-      try { 
-        orRes=await fetch('https://openrouter.ai/api/v1/chat/completions',{
-          method:'POST',
-          headers:{'Content-Type':'application/json','Authorization':`Bearer ${apiKey}`},
-          body:JSON.stringify(reqBody)
-        }); 
-      } catch(err){
-        lastErr=new Error('NETWORK_ERROR');
-        continue;
-      }
-      
-      if(!orRes.ok){
-        lastErr=new Error(`HTTP ${orRes.status} (OpenRouter/${model})`);
-        if(orRes.status===401||orRes.status===403) throw lastErr;
-        continue;
-      }
-      const orData=await orRes.json(); 
-      const orText=orData.choices?.[0]?.message?.content;
-      if(!orText){
-        lastErr=new Error(`응답 비어있음 (${model})`);
-        continue;
-      }
-      return orText; 
+      try{ orRes=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${apiKey}`,'HTTP-Referer':location.origin||'https://localhost','X-Title':'Instructor Page Builder'},body:JSON.stringify(reqBody)}); }
+      catch(err){ lastErr=new Error('NETWORK_ERROR'); continue; }
+      if(orRes.status===429){ lastErr=new Error('429_OPENROUTER'); continue; }
+      if(orRes.status===401||orRes.status===403) throw new Error('API 키 인증 실패 — OpenRouter 키를 확인해주세요');
+      if(!orRes.ok){ const d=await orRes.json().catch(()=>({})); lastErr=new Error(d.error?.message||`HTTP ${orRes.status}`); continue; }
+      const orData=await orRes.json(); const orText=orData.choices?.[0]?.message?.content;
+      if(!orText){ lastErr=new Error('OpenRouter 응답 비어있음'); continue; }
+      return orText; // 성공
     }
-    throw lastErr || new Error('OPENROUTER_ALL_FAILED');
+    throw lastErr||new Error('OPENROUTER_ALL_FAILED');
   }
 
-  // 선택된 provider 실행
-  if(provider==='openrouter') return await _callOpenRouter();
-  return await _callGemini();
-}
+  // ── 메인 로직: 선택 provider 시도 → 429/실패 시 반대로 우회 ──
+  if(provider==='openrouter'){
+    try{
+      return await _callOpenRouter();
+    }catch(orErr){
+      // OpenRouter 전체 실패 → Gemini로 자동 우회
+      const isRecoverable = orErr.message==='429_OPENROUTER'||orErr.message==='OPENROUTER_ALL_FAILED'||orErr.message==='NETWORK_ERROR';
+      if(isRecoverable && apiKey){
+        showToast('🔄 OpenRouter 한도 초과 — Gemini로 자동 전환 중...',3000);
+        try{ return await _callGemini(); }catch(gemFallback){ /* Gemini도 실패시 원래 OR 에러 throw */ }
+      }
+      throw orErr;
+    }
+  } else {
+    // Gemini 기본
+    try{
+      return await _callGemini();
+    }catch(gemErr){
+      // Gemini 429 → OpenRouter로 자동 우회
+      if(gemErr.message==='429_GEMINI'||gemErr.message==='NETWORK_ERROR'){
+        showRateLimit(60);
+        showToast('🔄 Gemini 한도 초과 — OpenRouter로 자동 전환 중...',3000);
+        // OpenRouter 키가 있으면 사용, 없으면 Gemini 키로 OR 시도
+        const orKey=localStorage.getItem('cak_openrouter')||sessionStorage.getItem('cak_openrouter')||apiKey;
+        if(orKey){
+          try{
+            // OR 키가 따로 있으면 그걸로, 없으면 Gemini 키로 시도
+            const savedProvider=getProvider();
+            // Temporarily use OR key
+            const _origGetKey=getApiKey;
+            try{ return await _callOpenRouterWithKey(orKey); }
+            catch(orFallback){ /* 둘 다 실패 */ }
+          }catch(e2){}
+        }
+        throw gemErr;
+      }
+      throw gemErr;
+    }
+  }
+
+  // OR 우회용 (다른 키로 호출 가능하도록 별도 함수)
+  async function _callOpenRouterWithKey(key){
+    const messages=[];
+    const sysContent=(system||'')+JSON_ENFORCE;
+    if(sysContent.trim()) messages.push({role:'system',content:sysContent});
+    messages.push({role:'user',content:useSearch?prompt+'\n\n(If info unavailable, use plausible Korean education copy.)':prompt});
+    for(const model of OR_MODELS){
+      const reqBody={model,messages,max_tokens:maxTokens,temperature:0.7};
+      if(!useSearch) reqBody.response_format={type:'json_object'};
+      let orRes;
+      try{ orRes=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${key}`,'HTTP-Referer':location.origin||'https://localhost','X-Title':'Instructor Page Builder'},body:JSON.stringify(reqBody)}); }
+      catch(err){ continue; }
+      if(!orRes.ok) continue;
+      const orData=await orRes.json(); const orText=orData.choices?.[0]?.message?.content;
+      if(orText) return orText;
+    }
+    throw new Error('OPENROUTER_ALL_FAILED');
+  }
 }/* ── 파티클 컨셉 매핑 (petals 오남용 방지) ── */
 function sanitizeParticle(aiParticle, mood, seedParticle){
   // Seed overrides AI when explicitly set
@@ -1776,1426 +1789,3 @@ EXTREME CSS INJECTION EXAMPLES (be creative and specific to the mood):
 
 🌿 잔디/자연 mood:
   extraCSS: ".card{border-radius:2px 18px 2px 18px!important;box-shadow:inset 0 0 0 1px rgba(5,150,105,.18),0 4px 20px rgba(5,150,105,.08)}.st{font-style:italic;letter-spacing:-.01em}.sec.alt{background-image:radial-gradient(ellipse at 20% 80%,rgba(5,150,105,.06) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(52,211,153,.05) 0%,transparent 50%)}.btn-p{box-shadow:0 6px 24px rgba(5,150,105,.3),inset 0 1px 0 rgba(255,255,255,.2)}"
-
-🎰 전광판/디지털 mood:
-  extraCSS: ".st{font-family:'Orbitron',monospace;letter-spacing:.15em;text-shadow:0 0 20px currentColor}.card{border:1px solid;box-shadow:inset 0 0 30px rgba(0,255,128,.04),0 0 0 1px rgba(0,255,128,.15);border-radius:0!important;background-image:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,255,128,.015) 3px,rgba(0,255,128,.015) 4px)}.sec{background-image:repeating-linear-gradient(0deg,transparent,transparent 4px,rgba(255,255,255,.008) 4px,rgba(255,255,255,.008) 5px)}.btn-p{border-radius:0!important;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);text-shadow:0 0 12px rgba(255,255,255,.6)}"
-
-🎌 전통/동양화 mood:
-  extraCSS: ".st{font-style:italic;letter-spacing:.06em}.card{border-radius:0 16px 0 16px!important;border-left:3px solid var(--c1)!important}.sec-h2::after{content:'';display:block;width:40px;height:2px;background:var(--c1);margin-top:10px}.tag-line::before{content:'';width:30px;height:1px;background:var(--c1)}.btn-p{border-radius:2px 16px 2px 16px!important}"
-
-🏛️ 건축/기하학 mood:
-  extraCSS: ".card{border-radius:0!important;border:none!important;outline:2px solid var(--bd);outline-offset:-2px;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px))}.btn-p,.btn-s{border-radius:0!important;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%)}.sec-h2{border-left:4px solid var(--c1);padding-left:16px}"
-
-🌊 물결/해양 mood:
-  extraCSS: ".card{border-radius:12px 2px 12px 2px!important;box-shadow:0 8px 32px rgba(14,165,233,.12)}.sec.alt{background-image:radial-gradient(ellipse at 50% 100%,rgba(14,165,233,.08),transparent 60%)}.st{letter-spacing:-.02em}.btn-p{box-shadow:0 8px 28px rgba(14,165,233,.35),inset 0 1px 0 rgba(255,255,255,.25)}"
-
-⚡ 전기/사이버 mood:
-  extraCSS: ".card{border:1px solid var(--c1)!important;border-radius:0!important;box-shadow:0 0 20px rgba(var(--c1),.12),inset 0 0 30px rgba(var(--c1),.04);background-image:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(255,255,255,.012) 10px,rgba(255,255,255,.012) 11px)}.btn-p{box-shadow:0 0 20px var(--c1),0 0 40px rgba(var(--c1),.3);text-shadow:0 0 10px rgba(255,255,255,.6)}.st{text-shadow:0 0 30px var(--c1);letter-spacing:.1em}"
-
-🎭 극장/드라마 mood:
-  extraCSS: ".card{border-radius:0 0 var(--r) 0!important;border-bottom:3px solid var(--c1)!important}.sec-h2{font-style:italic}.st{font-style:italic;letter-spacing:-.03em}.tag-line{font-style:normal;letter-spacing:.2em;text-decoration:underline;text-underline-offset:4px}.btn-p{border-radius:0!important;border-bottom:3px solid rgba(0,0,0,.3)!important}"
-`;
-
-  try{
-    const raw=await callClaude(
-      `You are a RADICAL, boundary-pushing UI designer. Create an EXTREME, highly specific CSS theme for a Korean tutoring landing page.
-
-MOOD / CONCEPT: "${seed.mood}"
-LAYOUT STYLE: ${seed.layout} — ${layoutGuide}
-FONT DIRECTION: ${seed.fontGuide||fontGuide}
-SPACING: ${seed.spacing}
-
-━━━ EXTREME CSS INJECTION RULES ━━━
-The "extraCSS" field is the most critical part. DO NOT just change colors.
-You MUST inject CSS that physically transforms the layout to EMBODY the mood.
-Techniques to use aggressively based on mood:
-
-1. clip-path: Use polygon/ellipse clip-paths on .card, .btn-p, .btn-s to create non-rectangular shapes
-2. background-image: Use repeating-linear-gradient for textures (grid lines, scanlines, stripes, hatching, dots)
-3. box-shadow: Use multi-layered glow effects, inner shadows, neon glows, depth shadows
-4. text-shadow: Use for glow effects, hard offset shadows (comic style), or neon text
-5. border tricks: diagonal cuts, asymmetric radii (e.g., 2px 18px 2px 18px), selective borders
-6. transform/skew: Use skewX on cards or sections for dynamic angles (avoid on text)
-7. ::after/::before in extraCSS: Add decorative elements, underlines, accent marks
-8. background-pattern: radial-gradient, conic-gradient for complex backgrounds
-9. Letter spacing + text-transform: For display text that matches the aesthetic
-10. filter: Use backdrop-filter, drop-shadow, blur for glassmorphism or effects
-
-${extremeCSSExamples}
-
-━━━ CRITICAL JSON SAFETY RULES ━━━
-- The "extraCSS" value MUST use ONLY single quotes (') for CSS string values. NEVER use double quotes (") inside CSS within extraCSS, as that breaks JSON parsing.
-- WRONG: .st{font-family:"Bebas Neue"} → CORRECT: .st{font-family:'Bebas Neue'}
-- WRONG: content:"" → CORRECT: content:''
-- All values must be on ONE single line (no \n, no line breaks inside any field)
-
-Pick a SPECIFIC Google Font that powerfully evokes the mood.
-
-━━━ PARTICLE RULES (CRITICAL — do NOT default to petals) ━━━
-- "petals" → ONLY for spring/cherry blossom/floral moods
-- "embers" → fire, intense, burning, hot, dark dramatic moods
-- "snow"   → winter, cold, ice, snow, blizzard moods
-- "stars"  → space, cosmos, night sky, galaxy, aurora moods
-- "gold"   → luxury, golden, premium, royal, desert/Egyptian moods
-- "leaves" → nature, forest, autumn, jungle, green organic moods
-- "none"   → ALL OTHER moods (urban, study, sport, stadium, academic, modern, architecture, etc.)
-Default to "none" if unsure. Never use "petals" for non-floral moods.
-
-━━━ HERO PHOTO QUERY RULES ━━━
-"heroPhotoQuery": provide 3-5 English keywords that would find a stunning background photo for this mood on a stock photo site. For abstract/geometric/minimal/colorful concepts with no real scene, return empty string "". Examples: "baseball stadium night lights crowd", "dark library candles books", "aurora borealis night sky green".
-
-Return ONLY this JSON (no markdown, all strings SINGLE-LINE, no newlines inside values):
-{
-  "name":"컨셉이름(2-4한글chars+emoji)",
-  "dark":true,
-  "heroStyle":"editorial",
-  "c1":"#hex",
-  "c2":"#hex",
-  "c3":"#hex",
-  "c4":"#hex",
-  "bg":"#hex",
-  "bg2":"#hex",
-  "bg3":"#hex",
-  "textHex":"#hex",
-  "textRgb":"r,g,b",
-  "bdAlpha":"rgba(r,g,b,.12)",
-  "displayFont":"exact Google Font name",
-  "bodyFont":"Noto Sans KR",
-  "fontWeights":"400;700;900",
-  "displayFontWeights":"400;700",
-  "borderRadiusPx":4,
-  "btnBorderRadiusPx":100,
-  "particle":"none",
-  "heroPhotoQuery":"english keywords for background photo OR empty string",
-  "ctaGradient":"linear-gradient(135deg,#hex,#hex)",
-  "extraCSS":"REQUIRED: aggressive CSS rules using clip-path/box-shadow/text-shadow/background-image/transforms that make the design viscerally feel like the mood — minimum 200 characters, use semicolons not newlines"
-}`,
-      'Return ONLY valid compact JSON. No markdown. No newlines inside values. extraCSS must be substantial. particle must follow strict rules — never default to petals.'
-    );
-    const r=safeJSON(raw);
-    // Sanitize particle — never allow petals unless spring/cherry/floral
-    const sanitizedParticle=sanitizeParticle(r.particle||'none', seed.mood, seed.particle);
-    // Build bg photo URL
-    const manualQuery=document.getElementById('bgImgQuery')?.value.trim()||'';
-    const photoQuery=manualQuery||r.heroPhotoQuery||seed.photoQuery||'';
-    const bgPhotoUrl=photoQuery?buildPhotoUrl(photoQuery):'';
-    const dfEnc=encodeURIComponent(r.displayFont);
-    const bfEnc=encodeURIComponent(r.bodyFont||'Noto Sans KR');
-    const cT={
-      name:r.name, dark:!!r.dark,
-      fonts:`https://fonts.googleapis.com/css2?family=${dfEnc}:wght@${r.displayFontWeights||'400;700;900'}&family=${bfEnc}:wght@${r.fontWeights||'300;400;500;700;900'}&display=swap`,
-      vars:`--c1:${r.c1};--c2:${r.c2};--c3:${r.c3};--c4:${r.c4};--bg:${r.bg};--bg2:${r.bg2};--bg3:${r.bg3};--text:${r.textHex};--t70:rgba(${r.textRgb},.7);--t45:rgba(${r.textRgb},.45);--bd:${r.bdAlpha};--fh:'${r.displayFont}','Noto Serif KR',serif;--fb:'${r.bodyFont||'Noto Sans KR'}',sans-serif;--fs:'Noto Serif KR',serif;--r:${r.borderRadiusPx||8}px;--r-btn:${r.btnBorderRadiusPx||100}px;`,
-      particle:sanitizedParticle, variant:r.heroStyle||'modern',
-      c1:r.c1, ctaGradient:r.ctaGradient||`linear-gradient(135deg,${r.c4},${r.c1})`,
-      extraCSS:r.extraCSS||'',
-      bgPhotoUrl:bgPhotoUrl,
-      heroPhotoQuery:photoQuery,
-    };
-    THEMES.custom=cT;S.customTheme=cT;S.concept='custom';
-    // 새 컨셉 생성 시 이전 업로드 배경 초기화
-    S.uploadedBgBase64=null;
-    if(S.customTheme)delete S.customTheme.uploadedBgBase64;
-    // 업로드 UI 리셋
-    const upThumb=document.getElementById('upbgThumb');
-    const upBtn=document.getElementById('upbgBtn');
-    const upClr=document.getElementById('upbgClr');
-    if(upThumb){upThumb.style.display='none';upThumb.src='';}
-    if(upBtn){upBtn.classList.remove('loaded');upBtn.innerHTML='📁 이미지 직접 업로드';}
-    if(upClr)upClr.style.display='none';
-    document.getElementById('custBadge').style.display='inline';
-    document.getElementById('cStatus').textContent=`"${r.name}" 생성 완료 ✓`;
-    // 배경 사진 입력창도 업데이트
-    const bgInpEl=document.getElementById('bgImgQuery');
-    if(bgInpEl&&photoQuery&&!bgInpEl.value)bgInpEl.value=photoQuery;
-    renderCG();
-    // 잠깐 로딩 표시 후 새 컨셉으로 화면 전환
-    document.getElementById('pf').style.opacity='0';
-    setTimeout(()=>{
-      refresh();
-      document.getElementById('pf').style.transition='opacity .4s';
-      setTimeout(()=>document.getElementById('pf').style.opacity='1',300);
-    },100);
-    autoSave();
-  }catch(e){
-    console.error('genConcept error:',e);
-    const _em=translateError(e.message||'');
-    if(e.message==='FILE_PROTOCOL'){ alert(_em); }
-    else{ document.getElementById('cStatus').textContent=_em.split('\n')[0]; document.getElementById('cStatus').style.color='#F87171'; if((e.message||'').includes('429')) showRateLimit(60); }}finally{
-    btn.disabled=false;btn.innerHTML='✦ 생성';
-    document.getElementById('df').classList.remove('ai-run');
-  }
-}
-
-/* ──────────────────────────────────────────
-   기능 2: 강사 정보 검색 (시그니처 학습법 추출)
-────────────────────────────────────────── */
-async function searchInstructor(){
-  const name=S.name.trim(), subject=S.subject.trim();
-  if(!name||name==='홍길동'){alert('강사명을 먼저 입력해주세요.');return;}
-  const btn=document.getElementById('searchBtn');
-  btn.classList.add('loading');btn.textContent='⏳';
-  setLdMsg('강사 정보 및 시그니처 학습법 검색 중...');
-  document.getElementById('loading').classList.add('show');
-  try{
-    const raw=await callClaude(
-      `Search for the Korean online educator "${name}" who teaches "${subject}" for 수능 (Korean SAT / 대학수학능력시험).
-      
-IMPORTANT: Specifically look for:
-1. Their SIGNATURE LEARNING METHOD or METHODOLOGY (시그니처 학습법) — any branded method name they invented (e.g., ABPS method, 강기분 method, 씽킹맵 etc.)
-2. Their SIGNATURE CURRICULUM NAMES (대표 커리큘럼 명칭) — specific course names they are known for
-3. Career background and teaching platform
-4. Famous slogans or philosophy
-5. Student reviews themes
-
-Return ONLY this JSON (no markdown, single-line strings):
-{"found":true,"bio":"2-3 sentences about background and platform","style":"teaching style in 1 sentence","slogan":"their famous phrase or motto if known, else empty string","signatureMethods":["method name 1 e.g. ABPS","method 2 if any"],"signatureCurriculumName":"their most famous curriculum brand name if any, else empty","curriculumSteps":[["01","step name","description","duration"],["02","...","...","..."]],"reviewTheme":"common student feedback in 1 sentence","badges":[["stat","label"],["stat","label"],["stat","label"],["stat","label"]],"desc":"2-3 sentences about instructor value proposition mentioning their methods","notFound":false}`,
-      'You are a Korean education researcher. Search thoroughly. Return ONLY valid compact JSON.',
-      true // enable web search
-    );
-    let result;
-    try{result=safeJSON(raw);}catch(e){result={found:false,notFound:true};}
-
-    if(result&&result.found&&!result.notFound){
-      // Build instructor profile for use in page sections
-      S.instructorProfile={
-        bio:result.bio||'',
-        style:result.style||'',
-        slogan:result.slogan||'',
-        signatureMethods:result.signatureMethods||[],
-        signatureCurriculumName:result.signatureCurriculumName||'',
-        curriculumSteps:result.curriculumSteps||null,
-        curriculumTitle:result.signatureCurriculumName?`${result.signatureCurriculumName} — ${S.subject} 완성 로드맵`:'',
-        desc:result.desc||'',
-        badges:result.badges||null,
-      };
-
-      // Render in sidebar
-      const card=document.getElementById('instCard');
-      const rows=document.getElementById('instRows');
-      card.classList.add('show');
-      let html=`<div class="inst-row"><b>이력:</b> ${result.bio}</div>`;
-      if(result.style)html+=`<div class="inst-row"><b>강의 스타일:</b> ${result.style}</div>`;
-      if(result.slogan)html+=`<div class="inst-row"><b>슬로건:</b> "${result.slogan}"</div>`;
-      if(result.signatureMethods?.length>0)html+=`<div style="margin-top:5px">${result.signatureMethods.map(m=>`<span class="inst-sig">${m}</span>`).join(' ')}</div>`;
-      if(result.signatureCurriculumName)html+=`<div class="inst-row" style="margin-top:5px"><b>대표 커리큘럼:</b> <span style="color:#F9A8D4">${result.signatureCurriculumName}</span></div>`;
-      rows.innerHTML=html;
-      refresh();
-    }else{
-      document.getElementById('instCard').classList.remove('show');
-      S.instructorProfile=null;
-    }
-  }catch(e){console.error(e);}
-  finally{
-    btn.classList.remove('loading');btn.textContent='🔍';
-    document.getElementById('loading').classList.remove('show');
-  }
-}
-
-/* ──────────────────────────────────────────
-   AI COPY GENERATOR
-────────────────────────────────────────── */
-async function genCopy(){
-  const desc=document.getElementById('cpInput').value.trim();
-  if(!desc){alert('페이지 맥락 또는 목적을 입력해주세요.\n예: "2027 KISS Logic 신규 커리큘럼, 고3 영어, 허어로 섹션·커리큘럼·수강후기 구성"');return;}
-  if(!getApiKey()){showToast('⚠ 좌측 상단 API KEY를 먼저 입력해주세요.');return;}
-  const ip=S.instructorProfile;
-  const btn=document.getElementById('cpBtn');
-  btn.disabled=true;btn.innerHTML='<span class="da">●</span><span class="db">●</span><span class="dc">●</span>';
-  setSpill('cpStatus','생성 중...','run');document.getElementById('cpStatus').style.display='inline-flex';
-  setLdMsg('AI가 전 섹션 문구를 생성 중...');
-  document.getElementById('loading').classList.add('show');
-  document.getElementById('df').classList.add('ai-run');
-  // 강사 정보는 있을 때만 포함 (선택적)
-  const instCtx=ip&&ip.bio?`강사: ${S.name||'선생님'}, ${ip.bio.slice(0,100)}. 메서드: ${(ip.signatureMethods||[]).join(',')||'없음'}.`
-    :(S.name&&S.name!=='홍길동'?`강사: ${S.name} ${S.subject}.`:'');
-  const purposeCtx=S.purposeType==='festival'?'과목 강사 기획전':S.purposeType==='event'?'이벤트':'신규 커리큘럼';
-  try{
-    const raw=await callClaude(
-      `한국어 교육 마케팅 카피라이터. 다음 맥락으로 랜딩페이지 전 섹션 문구를 생성하라.
-
-맥락: "${desc}"
-과목: ${S.subject||'영어'} | 대상: ${S.target||'고3·N수'} | 목적: ${purposeCtx}
-${instCtx}
-
-핵심: 강사 정보가 없어도 맥락만으로 설득력 있는 문구를 만들어라. 과목 특성과 수험생 심리를 반영하라.
-
-아래 JSON만 반환 (마크다운 없이, 값에 줄바꿈 없이):
-{"bannerSub":"8자이내","bannerTitle":"15자이내","bannerLead":"40자이내","ctaCopy":"8자이내","ctaTitle":"제목<br>2줄가능","ctaSub":"25자이내","ctaBadge":"15자이내","statBadges":[["수치","라벨"],["수치","라벨"],["수치","라벨"]],"introTitle":"15자이내","introDesc":"60자이내","introBio":"40자이내","introBadges":[["수치","라벨"],["수치","라벨"],["수치","라벨"]],"whyTitle":"15자이내","whySub":"25자이내","whyReasons":[["이모지","10자","40자"],["이모지","10자","40자"],["이모지","10자","40자"]],"curriculumTitle":"20자이내","curriculumSub":"25자이내","curriculumSteps":[["01","7자","12자","기간"],["02","7자","12자","기간"],["03","7자","12자","기간"],["04","7자","12자","기간"]],"targetTitle":"15자이내","targetItems":["20자이내","항목2","항목3","항목4"],"reviews":[["인용문25자","이름","뱃지"],["인용문","이름","뱃지"],["인용문","이름","뱃지"]],"faqs":[["질문12자","답변35자"],["질문","답변"],["질문","답변"]],"eventOverview":{"title":"제목","desc":"설명","details":[["아이콘","라벨","값"],["아이콘","라벨","값"]]},"benefitsTitle":"혜택제목","deadlineTitle":"마감제목","deadlineMsg":"마감메시지","festHeroTitle":"기획전제목","festHeroCopy":"서브카피","festCtaTitle":"CTA제목"}`,
-      '한국어 교육 카피라이터. 반드시 유효한 JSON만 반환. 마크다운 없음. 값에 줄바꿈 없음.',
-      false,
-      4000
-    );
-    S.customCopy=safeJSON(raw);
-    document.getElementById('copyBox').classList.add('active');
-    setSpill('cpStatus','✓ 적용됨','ok');
-    document.getElementById('cpReset').style.display='block';
-    refresh();
-    renderEditPanel();
-    autoSave();
-  }catch(e){
-    console.error('genCopy error:',e);
-    setSpill('cpStatus','실패','err');
-    const _em2=translateError(e.message||'');
-    if(e.message==='FILE_PROTOCOL'){ alert(_em2); }
-    else{ showToast('⚠ '+_em2.split('\n')[0],5500); if((e.message||'').includes('429')) showRateLimit(60); }}finally{
-    btn.disabled=false;btn.innerHTML='✦ 문구 생성';
-    document.getElementById('loading').classList.remove('show');
-    document.getElementById('df').classList.remove('ai-run');
-  }
-}
-
-function resetCopy(){
-  S.customCopy=null;
-  document.getElementById('copyBox').classList.remove('active');
-  document.getElementById('cpStatus').style.display='none';
-  document.getElementById('cpReset').style.display='none';
-  refresh();
-  renderEditPanel();
-  autoSave();
-}
-
-/* ──────────────────────────────────────────
-   요구사항 3: 섹션별 개별 AI 문구 생성 (주사위 버튼)
-────────────────────────────────────────── */
-async function genSectionCopy(sectionId, btnEl, ev){
-  if(ev){ev.stopPropagation();}
-  const sp=getSP();
-  const ip=S.instructorProfile;
-  const T=getT();
-  const conceptName=(S.concept==='custom'&&S.customTheme)?S.customTheme.name:S.concept;
-  const conceptDesc={
-    sakura:'벚꽃·봄·로맨틱·산뜻',fire:'다크·파이어·강렬·강인',ocean:'오션·블루·시원·신뢰',
-    luxury:'골드·럭셔리·고급·프리미엄',eco:'에코·그린·자연·편안',winter:'윈터·스노우·청량·집중',
-    cosmos:'코스모스·우주·심오·도전',custom:S.customTheme?.name||'AI 커스텀 컨셉'
-  }[S.concept]||'모던 컨셉';
-
-  const sectionLabelMap={
-    banner:'메인 배너(히어로)',intro:'강사 소개',why:'이 강의가 필요한 이유',
-    curriculum:'커리큘럼 특징',schedule:'강의 일정',target:'수강 대상',
-    sample:'샘플·미리보기',reviews:'수강생 후기',faq:'자주 묻는 질문',
-    cta:'수강신청 CTA',event_overview:'이벤트 개요',event_benefits:'이벤트 혜택',
-    event_deadline:'마감 안내',fest_hero:'기획전 히어로 배너',fest_lineup:'강사 라인업',
-    fest_strategy:'과목 학습 전략',fest_benefits:'기획전 혜택',fest_cta:'통합 CTA'
-  };
-  const sectionLabel=sectionLabelMap[sectionId]||sectionId;
-  const instInfo=ip?`강사: ${S.name}. ${ip.bio||''}. 학습법: ${(ip.signatureMethods||[]).join(', ')||'없음'}.`:`강사: ${S.name} ${S.subject}`;
-  const isFestival=S.purposeType==='festival';
-
-  // Show loading on button
-  if(btnEl){
-    btnEl.classList.add('spin-it');
-    btnEl.textContent='⏳';
-  }
-
-  // Show inline section loading badge in section name
-  const siEl=btnEl?btnEl.closest('.si'):null;
-  let ldBadge=null;
-  if(siEl){
-    ldBadge=document.createElement('span');
-    ldBadge.className='sec-ld';
-    ldBadge.innerHTML='<span class="da">●</span><span class="db">●</span><span class="dc">●</span>';
-    const snm=siEl.querySelector('.snm');
-    if(snm)snm.appendChild(ldBadge);
-  }
-
-  // Section-specific JSON schema definitions
-  const schemaMap={
-    banner:`{"bannerSub":"10자이내 키워드라인","bannerTitle":"20자이내 임팩트 제목","bannerLead":"35-55자 리드문구","statBadges":[["수치","라벨"],["수치","라벨"],["수치","라벨"]]}`,
-    intro:`{"introTitle":"20자이내","introDesc":"50-85자 강사 소개 문구","introBio":"30-55자 약력","introBadges":[["수치","라벨"],["수치","라벨"],["수치","라벨"],["수치","라벨"]]}`,
-    why:`{"whyTitle":"20자이내","whySub":"30자이내","whyReasons":[["이모지","12자제목","45자설명"],["이모지","12자제목","45자설명"],["이모지","12자제목","45자설명"]]}`,
-    curriculum:`{"curriculumTitle":"25자이내","curriculumSub":"35자이내","curriculumSteps":[["01","8자이내","14자이내","기간"],["02","제목","설명","기간"],["03","제목","설명","기간"],["04","제목","설명","기간"]]}`,
-    schedule:`{"scheduleRows":[["기간명","주제","내용"],["기간명","주제","내용"],["기간명","주제","내용"],["기간명","주제","내용"]]}`,
-    target:`{"targetTitle":"20자이내","targetItems":["25자이내","항목2","항목3","항목4"]}`,
-    reviews:`{"reviews":[["인용문(30자이내)","이름","뱃지"],["인용문","이름","뱃지"],["인용문","이름","뱃지"],["인용문","이름","뱃지"]]}`,
-    faq:`{"faqs":[["질문(15자이내)","답변(40자이내)"],["질문","답변"],["질문","답변"],["질문","답변"]]}`,
-    cta:`{"ctaBadge":"20자이내","ctaTitle":"CTA제목(줄바꿈은<br>)","ctaSub":"30자이내","ctaCopy":"수강신청 버튼 텍스트(10자이내)"}`,
-    event_overview:`{"eventOverview":{"title":"이벤트 제목(20자이내)","desc":"이벤트 설명(40자이내)","details":[["아이콘","라벨","값"],["아이콘","라벨","값"],["아이콘","라벨","값"]]}}`,
-    event_benefits:`{"benefitsTitle":"혜택 섹션 제목(20자이내)","eventBenefits":[{"no":"No.01","icon":"이모지","title":"혜택명","desc":"혜택 설명(35자이내)","tag":"뱃지"},{"no":"No.02","icon":"이모지","title":"혜택명","desc":"설명","tag":"뱃지"},{"no":"No.03","icon":"이모지","title":"혜택명","desc":"설명","tag":"뱃지"}]}`,
-    event_deadline:`{"deadlineTitle":"마감 섹션 제목(20자이내)","deadlineMsg":"마감 안내 메시지(60자이내, 컨셉 분위기 반영)"}`,
-    fest_hero:`{"festHeroTitle":"기획전 메인 제목(20자이내)","festHeroCopy":"서브 임팩트 카피(30자이내)","festHeroSub":"설명라인(40자이내)","festHeroStats":[["수치","라벨"],["수치","라벨"],["수치","라벨"],["수치","라벨"]]}`,
-    fest_lineup:`{"festLineupTitle":"라인업 섹션 제목(20자이내)","festLineupSub":"설명(40자이내)","festLineup":[{"name":"강사명","tag":"전문분야(8자이내)","tagline":"한줄소개(30자이내)","badge":"뱃지(8자이내)","emoji":"이모지"},{"name":"강사명","tag":"분야","tagline":"한줄소개","badge":"뱃지","emoji":"이모지"},{"name":"강사명","tag":"분야","tagline":"한줄소개","badge":"뱃지","emoji":"이모지"},{"name":"강사명","tag":"분야","tagline":"한줄소개","badge":"뱃지","emoji":"이모지"}]}`,
-    fest_strategy:`{"festStratTitle":"전략 섹션 제목(20자이내)","festStratSub":"설명(40자이내)"}`,
-    fest_benefits:`{"festBenefitsTitle":"혜택 섹션 제목(20자이내)","festBenefits":[{"icon":"이모지","title":"혜택명","desc":"설명(35자이내)","badge":"뱃지(8자이내)","no":"01"},{"icon":"이모지","title":"혜택명","desc":"설명","badge":"뱃지","no":"02"},{"icon":"이모지","title":"혜택명","desc":"설명","badge":"뱃지","no":"03"},{"icon":"이모지","title":"혜택명","desc":"설명","badge":"뱃지","no":"04"}]}`,
-    fest_cta:`{"festCtaTitle":"CTA 제목(줄바꿈은<br>)","festCtaSub":"서브 문구(40자이내)"}`
-  };
-  const schema=schemaMap[sectionId]||`{"title":"섹션 제목","desc":"섹션 설명 문구"}`;
-
-  const conceptContext=isFestival?
-    `이 페이지는 ${S.subject} 과목의 강사 라인업 기획전 페이지입니다. 강사 개인이 아닌 과목 전체를 홍보합니다.`:
-    `이 페이지는 ${S.name} 선생님의 ${S.subject} ${S.purposeType==='event'?'이벤트':'커리큘럼'} 홍보 페이지입니다.`;
-
-  try{
-    const raw=await callClaude(
-      `당신은 한국 수능 교육 마케팅 카피라이터입니다.
-현재 페이지 정보:
-- 과목: ${S.subject} / 대상: ${S.target} / 목적: ${S.purpose}
-- ${instInfo}
-- 페이지 컨셉: "${conceptDesc}" (${conceptName})
-- ${conceptContext}
-
-📌 중요: 컨셉 "${conceptDesc}"의 분위기와 어조를 문구에 적극 반영하세요.
-예시: '다크·파이어' 컨셉이면 강렬하고 도전적인 어조, '벚꽃·봄' 컨셉이면 산뜻하고 따뜻한 어조
-
-지금 재생성할 섹션: "${sectionLabel}"
-이 섹션의 문구만 새로 생성해주세요. 기존 톤앤매너와 일관성을 유지하면서 창의적으로 바꿔주세요.
-
-다음 JSON 형식으로만 응답 (마크다운 없이, 값에 줄바꿈 없이):
-${schema}`,
-      'Korean copywriter for education landing pages. Return ONLY valid compact JSON. No markdown. No newlines inside string values.'
-    );
-    const parsed=safeJSON(raw);
-    // Merge into S.customCopy
-    if(!S.customCopy)S.customCopy={};
-    Object.assign(S.customCopy,parsed);
-    refresh();
-  }catch(e){
-    console.error('genSectionCopy error:',e);
-    if(e.message==='FILE_PROTOCOL') alert(translateError(e.message)); else showToast('⚠ '+translateError(e.message||'').split('\n')[0],4000);
-  }finally{
-    if(btnEl){
-      btnEl.classList.remove('spin-it');
-      btnEl.textContent='🎲';
-    }
-    if(ldBadge)ldBadge.remove();
-  }
-}
-
-/* ──────────────────────────────────────────
-   기능 4: 커스텀 '기타' 섹션 AI 생성
-────────────────────────────────────────── */
-function toggleCustomSec(){
-  S.customSecOn=!S.customSecOn;
-  const panel=document.getElementById('customSecPanel');
-  const sck=document.getElementById('customSck');
-  const row=document.getElementById('customSecRow');
-  panel.style.display=S.customSecOn?'block':'none';
-  sck.classList.toggle('on',S.customSecOn);
-  row.classList.toggle('on',S.customSecOn);
-  refresh();
-}
-
-async function genCustomSec(){
-  const input=document.getElementById('customSecInput').value.trim();
-  if(!input){alert('원하는 내용을 먼저 입력해주세요.');return;}
-  const btn=document.getElementById('customGenBtn');
-  btn.disabled=true;btn.textContent='생성 중...';
-  document.getElementById('customSecStatus').textContent='';
-  setLdMsg('커스텀 섹션 생성 중...');
-  document.getElementById('loading').classList.add('show');
-  document.getElementById('df').classList.add('ai-run');
-
-  // Get current theme tone
-  const T=getT();
-  const isDark=T.dark;
-  const toneDesc=`The page uses a ${isDark?'dark':'light'} theme. Current concept: ${S.concept}. Subject: ${S.subject}. Instructor: ${S.name}.`;
-
-  try{
-    const raw=await callClaude(
-      `You are a Korean landing page copywriter. ${toneDesc}
-The user wants to add this custom section to the page: "${input}"
-
-Generate a complete section. Return ONLY this JSON (no markdown, single-line strings):
-{"tag":"섹션 태그라벨(10자이내)","title":"섹션 제목(20자이내)","body":"메인 본문 텍스트 (2-4문장, 전체 페이지 톤앤매너에 맞게)","html":"<div>...complete inner HTML using only inline styles matching CSS vars var(--c1) var(--bg) var(--text) var(--t70) var(--bd) var(--c2) var(--bg2) var(--bg3) var(--fh) var(--fb) var(--r) var(--r-btn)...</div>"}`,
-      'Korean copywriter. Return ONLY valid compact JSON. No markdown. No newlines in values.'
-    );
-    S.customSecContent=safeJSON(raw);
-    document.getElementById('customSecStatus').textContent='✓ 생성됨';
-    document.getElementById('customSecStatus').style.color='#34D399';
-    refresh();
-  }catch(e){
-    console.error(e);
-    document.getElementById('customSecStatus').textContent='실패';
-    document.getElementById('customSecStatus').style.color='#F87171';
-  }finally{
-    btn.disabled=false;btn.textContent='✦ AI 섹션 생성';
-    document.getElementById('loading').classList.remove('show');
-    document.getElementById('df').classList.remove('ai-run');
-  }
-}
-
-function clearCustomSec(){
-  S.customSecContent=null;
-  document.getElementById('customSecInput').value='';
-  document.getElementById('customSecStatus').textContent='';
-  refresh();
-}
-
-/* ──────────────────────────────────────────
-   UI RENDER
-────────────────────────────────────────── */
-function renderCG(){
-  const rec=PURPOSE_REC[S.purposeType]||[];
-  let html=CONCEPTS.map(c=>`
-    <button class="cc ${S.concept===c.id&&S.concept!=='custom'?'active':''} ${rec.includes(c.id)&&S.concept!==c.id?'rec-hl':''}" onclick="selectConcept('${c.id}')">
-      <div class="cc-bg" style="background:${c.bg}">
-        <div class="cc-name">${c.emoji} ${c.label}</div>
-        ${rec.includes(c.id)?'<div class="cc-rec">추천</div>':''}
-      </div>
-    </button>`).join('');
-  if(S.concept==='custom'&&S.customTheme){
-    const cT=S.customTheme;
-    html+=`<button class="cc active" style="border-color:#E84393;box-shadow:0 0 0 3px rgba(232,67,147,.18)"><div class="cc-bg" style="background:${cT.ctaGradient||`linear-gradient(135deg,${cT.c1||'#666'},#111)`}"><div class="cc-name">✦ ${cT.name||'AI 컨셉'}</div></div></button>`;
-  }
-  document.getElementById('cg').innerHTML=html;
-}
-
-function renderSL(){
-  document.getElementById('sl').innerHTML=S.sections.map((s,i)=>`
-    <div class="si ${s.on?'on':''}" draggable="true" data-i="${i}"
-         ondragstart="dS(event,${i})" ondragover="dO(event,${i})" ondragend="dE()"
-         onclick="toggleSec('${s.id}',event)">
-      <span class="sdrag">⠿</span>
-      <div class="sck ${s.on?'on':''}"></div>
-      <span class="snm">${s.label}</span>
-      ${s.on?`<button class="dice-btn" id="dice-${s.id}" title="이 섹션 문구만 AI 재생성" onclick="genSectionCopy('${s.id}',this,event)">🎲</button>`:''}
-    </div>`).join('');
-}
-
-async function selectConcept(id){
-  // UI 상태 업데이트
-  S.concept = id; 
-  S.customTheme = null;
-  document.getElementById('custBadge').style.display = 'none';
-  renderCG();
-  document.getElementById('pvurl').textContent = `preview://${id}-page`;
-
-  // 고정된 디자인이 아닌, 각 버튼의 고유 '무드'를 정의
-  const conceptMoods = {
-    'sakura': '벚꽃 봄, 핑크빛, 로맨틱하고 산뜻한 분위기',
-    'fire': '다크 파이어, 검은색과 주황색/빨간색 불꽃, 강렬하고 열정적인 무드',
-    'ocean': '오션 블루, 깊은 바다, 물결, 청량하고 시원한 신뢰감',
-    'luxury': '골드 럭셔리, 검은색 바탕에 금빛 포인트, 고급스럽고 프리미엄',
-    'eco': '에코 그린, 숲, 자연, 편안하고 안정적인 초록빛',
-    'winter': '윈터 스노우, 눈 내리는 겨울, 빙하, 차분한 파란색',
-    'cosmos': '코스모스, 우주, 별빛, 오로라, 신비롭고 깊은 보라색'
-  };
-
-  if(conceptMoods[id]) {
-    // 🌟 레이아웃을 누를 때마다 랜덤하게 섞어서 파격적으로 변하게 만듦
-    const layouts = ['brutalist', 'editorial', 'minimal', 'magazine', 'immersive', 'organic', 'modern', 'geometric'];
-    const randomLayout = layouts[Math.floor(Math.random() * layouts.length)];
-    
-    // AI 묘사 칸에 자동으로 텍스트를 채우고 상태 업데이트
-    document.getElementById('aiDesc').value = conceptMoods[id];
-    document.getElementById('cStatus').textContent = `"${id}" 컨셉 무한 변형 중...`;
-    
-    // AI에게 디자인 뼈대 생성 지시
-    await genConceptWithSeed({
-      mood: conceptMoods[id], 
-      layout: randomLayout, 
-      font: 'auto', 
-      spacing: 'auto'
-    });
-  } else {
-    refresh(); // 커스텀 테마 등 다른 예외 상황
-  }
-}
-
-function toggleSec(id,ev){
-  if(ev&&ev.target&&ev.target.classList.contains('dice-btn'))return;
-  S.sections=S.sections.map(s=>s.id===id?{...s,on:!s.on}:s);renderSL();refresh();
-}
-
-let di=null;
-function dS(ev,i){di=i;ev.dataTransfer.effectAllowed='move';}
-function dO(ev,i){ev.preventDefault();if(di===null||di===i)return;const n=[...S.sections];const[it]=n.splice(di,1);n.splice(i,0,it);di=i;S.sections=n;renderSL();}
-function dE(){di=null;refresh();}
-
-/* 기능 3: 목적에 따른 섹션 완전 분리 */
-function setPurpose(t){
-  S.purposeType=t;
-  document.getElementById('bCurr').classList.toggle('on',t==='curriculum');
-  document.getElementById('bEvt').classList.toggle('on',t==='event');
-  document.getElementById('bFest').classList.toggle('on',t==='festival');
-  document.getElementById('iPurpose').placeholder=
-    t==='curriculum'?'예: 2026 수능 파이널 완성':
-    t==='event'?'예: 6월 모의고사 특강 이벤트':
-    '예: 2026 영어 기획전 — 4인 강사 특가';
-  document.getElementById('phint').textContent=PURPOSE_HINTS[t]||'';
-  // SWITCH section templates completely
-  S.sections=JSON.parse(JSON.stringify(
-    t==='event'?SECTIONS_EVENT:
-    t==='festival'?SECTIONS_FESTIVAL:
-    SECTIONS_CURRICULUM
-  ));
-  renderSL();
-  // Recommend concept
-  const rec=PURPOSE_REC[t]||[];
-  renderCG();
-  if(!rec.includes(S.concept)&&S.concept!=='custom'){
-    const best=CONCEPTS.find(c=>c.id===rec[0]);
-    if(best){S.concept=best.id;renderCG();}
-  }
-  refresh();
-}
-
-function setTarget(t){
-  S.target=t;
-  document.querySelectorAll('[data-t]').forEach(el=>{
-    const on=el.dataset.t===t;
-    el.classList.toggle('on',on);
-    el.querySelector('.rd').classList.toggle('on',on);
-  });
-  refresh();
-}
-
-let dt;
-function refresh(){
-  clearTimeout(dt);
-  document.getElementById('loading').classList.add('show');
-  setLdMsg('렌더링 중...');
-  dt=setTimeout(()=>{
-    try{
-      const html=buildHTML();
-      document.getElementById('pf').srcdoc=html;
-      // A/B 모드면 A 패널도 갱신
-      if(abActive){
-        document.getElementById('ab-frame-a').srcdoc=html;
-      }
-    }catch(e){console.error(e);}
-    setTimeout(()=>document.getElementById('loading').classList.remove('show'),350);
-  },220);
-}
-
-function exportHTML(){
-  const blob=new Blob([buildHTML()],{type:'text/html'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
-  const cn=S.concept==='custom'&&S.customTheme?S.customTheme.name:S.concept;
-  a.download=`${S.name}_${S.subject}_${cn}.html`;a.click();
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   🎨 기능 A: 이미지 → 컬러팔레트 추출
-   Canvas 기반 K-means 색상 클러스터링
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-let palColors=[];
-let palSelectedIdx=-1;
-
-function palDragOver(e){e.preventDefault();document.getElementById('palDrop').classList.add('drag-over');}
-function palDragLeave(e){document.getElementById('palDrop').classList.remove('drag-over');}
-function palDrop(e){
-  e.preventDefault();
-  document.getElementById('palDrop').classList.remove('drag-over');
-  const f=e.dataTransfer.files[0];
-  if(f&&f.type.startsWith('image/'))palProcess(f);
-}
-function palLoadFile(inp){if(inp.files[0])palProcess(inp.files[0]);}
-
-function palProcess(file){
-  const reader=new FileReader();
-  reader.onload=ev=>{
-    const img=new Image();
-    img.onload=()=>{
-      const cv=document.getElementById('palCanvas');
-      const ctx=cv.getContext('2d');
-      const MAX=120;
-      const scale=Math.min(MAX/img.width,MAX/img.height,1);
-      cv.width=Math.round(img.width*scale);
-      cv.height=Math.round(img.height*scale);
-      ctx.drawImage(img,0,0,cv.width,cv.height);
-      const data=ctx.getImageData(0,0,cv.width,cv.height).data;
-      palColors=extractPalette(data,8);
-      palSelectedIdx=-1;
-      renderSwatches();
-      document.getElementById('palResult').style.display='block';
-      document.getElementById('palDrop').querySelector('.pal-drop-txt').innerHTML=
-        `✓ <b>${file.name.substring(0,18)}</b> 로드됨`;
-    };
-    img.src=ev.target.result;
-  };
-  reader.readAsDataURL(file);
-}
-
-/* 간소화된 Median-Cut 팔레트 추출 */
-function extractPalette(data,n){
-  const pixels=[];
-  const step=Math.max(1,Math.floor(data.length/4/3000));
-  for(let i=0;i<data.length;i+=4*step){
-    const r=data[i],g=data[i+1],b=data[i+2],a=data[i+3];
-    if(a<128)continue;
-    // Skip near-white/near-black
-    const lum=0.299*r+0.587*g+0.114*b;
-    if(lum>245||lum<10)continue;
-    pixels.push([r,g,b]);
-  }
-  if(!pixels.length)return[['#667eea'],['#764ba2'],['#f64f59'],['#c471ed'],['#12c2e9'],['#43e97b'],['#fa709a'],['#fee140']];
-
-  // K-means with k=n
-  let centers=[];
-  for(let i=0;i<n;i++){
-    centers.push(pixels[Math.floor(i*pixels.length/n)]);
-  }
-  for(let iter=0;iter<12;iter++){
-    const buckets=Array.from({length:n},()=>[[0,0,0],0]);
-    for(const p of pixels){
-      let best=0,bestD=Infinity;
-      for(let k=0;k<n;k++){
-        const d=(p[0]-centers[k][0])**2+(p[1]-centers[k][1])**2+(p[2]-centers[k][2])**2;
-        if(d<bestD){bestD=d;best=k;}
-      }
-      buckets[best][0][0]+=p[0];buckets[best][0][1]+=p[1];buckets[best][0][2]+=p[2];buckets[best][1]++;
-    }
-    for(let k=0;k<n;k++){
-      if(buckets[k][1]>0){
-        const cnt=buckets[k][1];
-        centers[k]=[buckets[k][0][0]/cnt,buckets[k][0][1]/cnt,buckets[k][0][2]/cnt];
-      }
-    }
-  }
-  // Sort by saturation (most vivid first)
-  return centers.sort((a,b)=>{
-    const satA=rgbSat(...a),satB=rgbSat(...b);
-    return satB-satA;
-  }).map(c=>['#'+c.map(v=>Math.round(v).toString(16).padStart(2,'0')).join('')]);
-}
-
-function rgbSat(r,g,b){
-  const M=Math.max(r,g,b)/255,m=Math.min(r,g,b)/255;
-  return M===0?0:(M-m)/M;
-}
-
-function renderSwatches(){
-  const sw=document.getElementById('palSwatches');
-  sw.innerHTML=palColors.map((c,i)=>`
-    <div class="pal-sw ${i===palSelectedIdx?'sel':''}" 
-         style="background:${c[0]}" 
-         onclick="selectSwatch(${i})" 
-         title="${c[0]}"></div>`).join('');
-}
-
-function selectSwatch(i){
-  palSelectedIdx=i;
-  renderSwatches();
-  document.getElementById('palApplyBtn').disabled=false;
-  document.getElementById('palHint').textContent=`선택됨: ${palColors[i][0]} — 이 컬러로 AI 테마 생성`;
-}
-
-async function applyPalette(){
-  if(palSelectedIdx<0)return;
-  const mainColor=palColors[palSelectedIdx][0];
-  const btn=document.getElementById('palApplyBtn');
-  btn.disabled=true;btn.textContent='AI 테마 생성 중...';
-  document.getElementById('df').classList.add('ai-run');
-  setLdMsg('이미지 컬러로 테마 생성 중...');
-  document.getElementById('loading').classList.add('show');
-
-  // Derive supporting colors from palette
-  const supportColors=palColors.filter((_,i)=>i!==palSelectedIdx).slice(0,3).map(c=>c[0]);
-  const hex=mainColor;
-  // Determine dark/light based on luminance
-  const rgb=parseInt(hex.slice(1),16);
-  const lum=(((rgb>>16)&255)*299+(( rgb>>8)&255)*587+((rgb)&255)*114)/1000;
-  const isDark=lum<128;
-
-  try{
-    const raw=await callClaude(
-      `You are a UI designer. Generate a complete CSS theme based on this EXACT extracted main color.
-MAIN COLOR (MUST use as --c1): ${hex}
-SUPPORTING COLORS from same image: ${supportColors.join(', ')||'auto-generate harmonious'}
-DARK THEME: ${isDark}
-
-Rules:
-- --c1 MUST be exactly: ${hex}
-- Generate harmonious --c2, --c3 based on the main color
-- If dark theme, --bg should be very dark (near black), text should be light
-- If light theme, --bg should be near-white, text should be dark
-- extraCSS: add subtle CSS enhancements fitting the color mood, use SINGLE QUOTES only for CSS strings
-- Pick a Google Font that matches the mood of this color
-
-Return ONLY valid compact JSON (no markdown, single-line):
-{"name":"2-4한글chars+emoji","dark":${isDark},"heroStyle":"modern","c1":"${hex}","c2":"#hex","c3":"#hex","c4":"#hex","bg":"#hex","bg2":"#hex","bg3":"#hex","textHex":"#hex","textRgb":"r,g,b","bdAlpha":"rgba(r,g,b,.12)","displayFont":"Google Font name","bodyFont":"Noto Sans KR","fontWeights":"400;700;900","displayFontWeights":"400;700","borderRadiusPx":8,"btnBorderRadiusPx":100,"particle":"none","heroPhotoQuery":"","ctaGradient":"linear-gradient(135deg,#hex,${hex})","extraCSS":"subtle enhancement CSS using single quotes only"}`,
-      'Return ONLY valid compact JSON. No markdown. extraCSS must use single quotes for CSS strings only.'
-    );
-    const r=safeJSON(raw);
-    r.c1=hex; // Ensure exact color preservation
-    const dfEnc=encodeURIComponent(r.displayFont);
-    const bfEnc=encodeURIComponent(r.bodyFont||'Noto Sans KR');
-    const cT={
-      name:r.name,dark:!!r.dark,
-      fonts:`https://fonts.googleapis.com/css2?family=${dfEnc}:wght@${r.displayFontWeights||'400;700;900'}&family=${bfEnc}:wght@${r.fontWeights||'300;400;500;700;900'}&display=swap`,
-      vars:`--c1:${r.c1};--c2:${r.c2};--c3:${r.c3};--c4:${r.c4};--bg:${r.bg};--bg2:${r.bg2};--bg3:${r.bg3};--text:${r.textHex};--t70:rgba(${r.textRgb},.7);--t45:rgba(${r.textRgb},.45);--bd:${r.bdAlpha};--fh:'${r.displayFont}','Noto Serif KR',serif;--fb:'${r.bodyFont||'Noto Sans KR'}',sans-serif;--fs:'Noto Serif KR',serif;--r:${r.borderRadiusPx||8}px;--r-btn:${r.btnBorderRadiusPx||100}px;`,
-      particle:sanitizeParticle(r.particle||'none','',''),
-      variant:r.heroStyle||'modern',
-      c1:r.c1,ctaGradient:r.ctaGradient||`linear-gradient(135deg,${r.c4},${r.c1})`,
-      extraCSS:r.extraCSS||'',bgPhotoUrl:'',heroPhotoQuery:'',
-    };
-    THEMES.custom=cT;S.customTheme=cT;S.concept='custom';
-    document.getElementById('custBadge').style.display='inline';
-    document.getElementById('cStatus').textContent=`"${r.name}" 팔레트 적용 완료 ✓`;
-    renderCG();refresh();
-    showToast(`🎨 ${r.name} 테마가 적용됐습니다!`);
-  }catch(e){
-    console.error(e);
-    document.getElementById('palHint').textContent='생성 실패. 다시 시도해주세요.';
-    document.getElementById('palHint').style.color='#F87171';
-  }finally{
-    btn.disabled=false;btn.textContent='✦ 이 색으로 테마 생성';
-    document.getElementById('df').classList.remove('ai-run');
-    document.getElementById('loading').classList.remove('show');
-  }
-}
-
-function palReset(){
-  palColors=[];palSelectedIdx=-1;
-  document.getElementById('palResult').style.display='none';
-  document.getElementById('palDrop').querySelector('.pal-drop-txt').innerHTML=
-    '📁 <b>클릭</b>하거나 이미지를 <b>드래그</b>해서 올려주세요<br><span style="font-size:8.5px;opacity:.6">JPG · PNG · WEBP</span>';
-  document.getElementById('palFile').value='';
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   ⚡ 기능 B: A/B 비교 뷰
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-let abActive=false;
-let abStateB=null; // Saved theme state for B
-
-function toggleAB(){
-  abActive=!abActive;
-  const btn=document.getElementById('abBtn');
-  const wrap=document.getElementById('pvwrap');
-  const abWrap=document.getElementById('pvwrap-ab');
-  btn.classList.toggle('on',abActive);
-  if(abActive){
-    wrap.style.display='none';
-    abWrap.style.display='flex';
-    // Fill A with current page
-    const html=buildHTML();
-    document.getElementById('ab-frame-a').srcdoc=html;
-    // Fill B with current page too (until regenerated)
-    if(!abStateB){
-      document.getElementById('ab-frame-b').srcdoc=html;
-      document.getElementById('ab-frame-b').srcdoc=`<html><body style="background:#0E1119;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif"><div style="text-align:center;color:#5A6A88"><div style="font-size:32px;margin-bottom:12px">🎲</div><div style="font-size:14px;font-weight:700;color:#8898B8">B 버전 생성 대기 중</div><div style="font-size:11px;margin-top:6px">"B 버전 새로 생성" 버튼을 눌러주세요</div></div></body></html>`;
-    } else {
-      document.getElementById('ab-frame-b').srcdoc=buildHTMLWithState(abStateB);
-    }
-  } else {
-    wrap.style.display='';
-    abWrap.style.display='none';
-    setDevice('desktop'); // Reset view
-  }
-}
-
-async function genABVariant(){
-  const btn=document.getElementById('abGenBtn');
-  btn.disabled=true;btn.textContent='생성 중...';
-  // Generate random seed
-  const seed=RANDOM_SEEDS[Math.floor(Math.random()*RANDOM_SEEDS.length)];
-  try{
-    // Temporarily suppress UI updates
-    const origConcept=S.concept, origTheme=S.customTheme;
-    // Run silent genConcept
-    const layoutGuide={brutalist:'sharp corners, heavy uppercase',editorial:'serif italic, whitespace',minimal:'extreme whitespace',magazine:'mixed sizes, editorial',immersive:'dark, glowing',organic:'rounded, natural',modern:'clean grid',mono:'monospace terminal',geometric:'bauhaus primary',auto:'best fit'}[seed.layout]||'auto';
-    const raw=await callClaude(
-      `Create a CSS theme for Korean tutoring landing page. MOOD: "${seed.mood}". LAYOUT: ${seed.layout} (${layoutGuide}). Return ONLY compact JSON (no markdown, single-line, single quotes in extraCSS):
-{"name":"2-4한글+emoji","dark":true,"heroStyle":"modern","c1":"#hex","c2":"#hex","c3":"#hex","c4":"#hex","bg":"#hex","bg2":"#hex","bg3":"#hex","textHex":"#hex","textRgb":"r,g,b","bdAlpha":"rgba(r,g,b,.12)","displayFont":"Google Font","bodyFont":"Noto Sans KR","fontWeights":"400;700;900","displayFontWeights":"400;700","borderRadiusPx":8,"btnBorderRadiusPx":100,"particle":"none","heroPhotoQuery":"","ctaGradient":"linear-gradient(135deg,#hex,#hex)","extraCSS":"CSS with single quotes only"}`,
-      'Return ONLY valid compact JSON. extraCSS must use single quotes for CSS strings.'
-    );
-    const r=safeJSON(raw);
-    const dfEnc=encodeURIComponent(r.displayFont);
-    const bfEnc=encodeURIComponent(r.bodyFont||'Noto Sans KR');
-    abStateB={
-      theme:{
-        name:r.name,dark:!!r.dark,
-        fonts:`https://fonts.googleapis.com/css2?family=${dfEnc}:wght@${r.displayFontWeights||'400;700;900'}&family=${bfEnc}:wght@${r.fontWeights||'300;400;500;700;900'}&display=swap`,
-        vars:`--c1:${r.c1};--c2:${r.c2};--c3:${r.c3};--c4:${r.c4};--bg:${r.bg};--bg2:${r.bg2};--bg3:${r.bg3};--text:${r.textHex};--t70:rgba(${r.textRgb},.7);--t45:rgba(${r.textRgb},.45);--bd:${r.bdAlpha};--fh:'${r.displayFont}','Noto Serif KR',serif;--fb:'${r.bodyFont||'Noto Sans KR'}',sans-serif;--fs:'Noto Serif KR',serif;--r:${r.borderRadiusPx||8}px;--r-btn:${r.btnBorderRadiusPx||100}px;`,
-        particle:sanitizeParticle(r.particle||'none',seed.mood,seed.particle),
-        variant:r.heroStyle||'modern',
-        c1:r.c1,ctaGradient:r.ctaGradient||`linear-gradient(135deg,${r.c4},${r.c1})`,
-        extraCSS:r.extraCSS||'',bgPhotoUrl:buildPhotoUrl(seed.photoQuery||r.heroPhotoQuery||''),
-      },
-      mood:seed.mood
-    };
-    // Update B frame
-    const bHtml=buildHTMLWithState(abStateB);
-    document.getElementById('ab-frame-b').srcdoc=bHtml;
-    document.querySelector('#pvwrap-ab .ab-panel:last-child .ab-lbl-txt').textContent=`버전 B — ${r.name}`;
-    // Also refresh A
-    document.getElementById('ab-frame-a').srcdoc=buildHTML();
-  }catch(e){console.error(e);}
-  finally{btn.disabled=false;btn.textContent='🎲 B 버전 새로 생성';}
-}
-
-function buildHTMLWithState(state){
-  // Temporarily swap theme, build HTML, restore
-  const savedConcept=S.concept, savedTheme=S.customTheme;
-  THEMES.custom=state.theme;
-  S.concept='custom';S.customTheme=state.theme;
-  const html=buildHTML();
-  S.concept=savedConcept;S.customTheme=savedTheme;
-  THEMES.custom=savedTheme||{};
-  return html;
-}
-
-function applyABVersion(ver){
-  if(ver==='b'&&abStateB){
-    THEMES.custom=abStateB.theme;
-    S.concept='custom';S.customTheme=abStateB.theme;
-    document.getElementById('custBadge').style.display='inline';
-    renderCG();
-    showToast('✓ B 버전이 적용됐습니다!');
-  }
-  toggleAB(); // Close AB mode
-  refresh();
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   🔗 기능 C: 공유 링크 (URL Hash 직렬화)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-function shareLink(){
-  try{
-    // Serialize essential state (exclude large generative content)
-    const shareState={
-      concept:S.concept,
-      name:S.name,
-      subject:S.subject,
-      purposeType:S.purposeType,
-      purpose:S.purpose,
-      target:S.target,
-      sections:S.sections,
-      customCopy:S.customCopy,
-      // Custom theme (without fonts string to save space)
-      customTheme:S.customTheme?{
-        name:S.customTheme.name,
-        dark:S.customTheme.dark,
-        vars:S.customTheme.vars,
-        fonts:S.customTheme.fonts,
-        particle:S.customTheme.particle,
-        variant:S.customTheme.variant,
-        c1:S.customTheme.c1,
-        ctaGradient:S.customTheme.ctaGradient,
-        extraCSS:S.customTheme.extraCSS,
-        bgPhotoUrl:S.customTheme.bgPhotoUrl||'',
-      }:null,
-    };
-    const encoded=btoa(unescape(encodeURIComponent(JSON.stringify(shareState))));
-    const url=`${location.href.split('#')[0]}#state=${encoded}`;
-    navigator.clipboard.writeText(url).then(()=>{
-      showToast('🔗 공유 링크가 클립보드에 복사됐습니다!');
-    }).catch(()=>{
-      // Fallback: prompt
-      prompt('아래 링크를 복사하세요:', url);
-    });
-  }catch(e){
-    console.error('Share failed:',e);
-    showToast('⚠ 링크 생성에 실패했습니다.');
-  }
-}
-
-function restoreFromHash(){
-  try{
-    const hash=location.hash;
-    if(!hash.includes('#state='))return;
-    const encoded=hash.replace('#state=','');
-    const state=JSON.parse(decodeURIComponent(escape(atob(encoded))));
-    Object.assign(S,state);
-    if(state.customTheme){
-      THEMES.custom=state.customTheme;
-    }
-    renderCG();renderSL();refresh();
-    showToast('✓ 공유된 페이지가 복원됐습니다!');
-  }catch(e){
-    console.warn('Hash restore failed:',e);
-  }
-}
-
-/* ━━━ 에러 코드 변환기 ━━━ */
-function translateError(msg){
-  if(!msg) return '알 수 없는 오류';
-  if(msg==='FILE_PROTOCOL'||msg.includes('FILE_PROTOCOL'))
-    return 'HTML 파일을 직접 열면 AI가 동작하지 않습니다.\n해결: Netlify에 업로드하거나 VS Code Live Server로 열어주세요.';
-  if(msg==='NETWORK_ERROR'||msg.includes('NETWORK_ERROR')||
-     msg.toLowerCase().includes('failed to fetch')||
-     msg.toLowerCase().includes('networkerror')||
-     msg.toLowerCase().includes('load failed'))
-    return '🌐 네트워크 오류 — 인터넷 연결 확인 후 잠시 후 다시 시도해주세요.';
-  // HTTP 상태/원인은 그대로 노출 (429/401/403 등)
-  if(/^HTTP\s+\d+/.test(msg)) return msg;
-  if(msg.includes('429')) return `HTTP 429: ${msg}`;
-  if(msg.includes('credit')||msg.includes('balance')||msg.includes('billing')||msg.includes('quota'))
-    return '💳 크레딧/할당량 부족 — aistudio.google.com 또는 openrouter.ai에서 확인하세요.';
-  if(msg.includes('인증 실패')||msg.includes('401')||msg.includes('403'))
-    return `🔑 인증/권한 오류: ${msg}`;
-  if(msg.includes('안전 필터')) return '🛡 안전 필터 차단 — 다른 표현으로 다시 시도해주세요.';
-  return msg;
-}
-let _rlTimer=null;
-function showRateLimit(sec){
-  const bar=document.getElementById('rateLimitBar');const cd=document.getElementById('rateLimitCountdown');
-  if(!bar||!cd)return; if(_rlTimer)clearInterval(_rlTimer);
-  bar.style.display='block'; let left=sec;
-  const upd=()=>{ cd.textContent=`${left}초 후 재시도 가능`; if(--left<0){clearInterval(_rlTimer);bar.style.display='none';} };
-  upd(); _rlTimer=setInterval(upd,1000);
-}
-/* ━━━ 토스트 유틸 ━━━ */
-function showToast(msg,duration=2800){
-  const t=document.getElementById('shareToast');
-  t.textContent=msg;
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),duration);
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   🔑 API KEY 관리 (Gemini / OpenRouter 이중 지원)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-const PROVIDER_HINTS={
-  gemini:'aistudio.google.com → 무료 키 발급 (분당 15회)',
-  openrouter:'openrouter.ai → 회원가입 후 무료 키 발급'
-};
-const PROVIDER_PLACEHOLDERS={
-  gemini:'AIzaSy...',
-  openrouter:'sk-or-v1-...'
-};
-
-function getProvider(){
-  return localStorage.getItem('pgb_provider')||'gemini';
-}
-function setProvider(p){
-  localStorage.setItem('pgb_provider',p);
-  // 버튼 UI 업데이트
-  ['gemini','openrouter'].forEach(id=>{
-    const btn=document.getElementById('prov'+id.charAt(0).toUpperCase()+id.slice(1).replace('router','Router'));
-    if(btn){btn.classList.toggle('on',id===p);}
-  });
-  // 힌트 & placeholder 업데이트
-  const hint=document.getElementById('provHint');
-  const inp=document.getElementById('apikeyInp');
-  if(hint)hint.textContent=PROVIDER_HINTS[p]||'';
-  if(inp)inp.placeholder=PROVIDER_PLACEHOLDERS[p]||'';
-  // 해당 provider 키가 저장돼 있으면 표시
-  const k=localStorage.getItem('cak_'+p)||sessionStorage.getItem('cak_'+p)||'';
-  const st=document.getElementById('apikeyStatus');
-  if(k){
-    inp.value='●'.repeat(Math.min(k.length,20));
-    st.className='apikey-status ok';
-    st.textContent=`✓ ${p==='gemini'?'Gemini':'OpenRouter'} 키 저장됨 — ${k.slice(0,5)}...${k.slice(-4)}`;
-  } else {
-    inp.value='';
-    st.className='apikey-status none';
-    st.textContent='키를 입력하면 AI 기능이 활성화됩니다';
-  }
-}
-function getApiKey(){
-  const p=getProvider();
-  // provider별 키 우선, 없으면 공통 키 fallback
-  return localStorage.getItem('cak_'+p)||sessionStorage.getItem('cak_'+p)
-      || sessionStorage.getItem('cak')||localStorage.getItem('cak')||'';
-}
-function saveApiKey(){
-  const v=document.getElementById('apikeyInp').value.trim();
-  const st=document.getElementById('apikeyStatus');
-  if(!v){st.className='apikey-status err';st.textContent='키를 입력해주세요';return;}
-  const p=getProvider();
-  sessionStorage.setItem('cak_'+p,v);
-  localStorage.setItem('cak_'+p,v);
-  document.getElementById('apikeyInp').value='●'.repeat(Math.min(v.length,20));
-  st.className='apikey-status ok';
-  st.textContent=`✓ ${p==='gemini'?'Gemini':'OpenRouter'} 키 저장됨 — ${v.slice(0,5)}...${v.slice(-4)}`;
-}
-function initApiKeyUI(){
-  const p=getProvider();
-  setProvider(p); // 버튼 활성화 + 힌트 + placeholder 세팅
-}
-// Enter key to save
-document.getElementById('apikeyInp').addEventListener('keydown',e=>{if(e.key==='Enter')saveApiKey();});
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   🖼 배경 이미지 직접 업로드 (Base64)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-function loadUploadedBg(inp){
-  if(!inp.files[0])return;
-  const file=inp.files[0];
-  const reader=new FileReader();
-  reader.onload=e=>{
-    const b64=e.target.result; // data:image/...;base64,...
-    S.uploadedBgBase64=b64;
-    // Update theme
-    if(!S.customTheme)S.customTheme={...THEMES[S.concept]||THEMES.sakura};
-    if(!S.customTheme.vars)S.customTheme.vars=(THEMES[S.concept]||THEMES.sakura).vars||'';
-    S.customTheme.bgPhotoUrl=''; // base64 takes priority
-    S.customTheme.uploadedBgBase64=b64;
-    // Update UI
-    const thumb=document.getElementById('upbgThumb');
-    thumb.src=b64;thumb.style.display='block';
-    const btn=document.getElementById('upbgBtn');
-    btn.classList.add('loaded');
-    btn.innerHTML=`✓ ${file.name.slice(0,18)} 로드됨`;
-    document.getElementById('upbgClr').style.display='';
-    // Update pvurl
-    document.getElementById('pvurl').textContent=`preview://uploaded-bg — ${file.name}`;
-    // Apply concept as custom if not already
-    if(S.concept!=='custom'){
-      THEMES.custom={...S.customTheme};
-      S.concept='custom';
-      document.getElementById('custBadge').style.display='inline';
-      renderCG();
-    }
-    refresh();
-    showToast('🖼 배경 이미지가 적용됐습니다!');
-  };
-  reader.readAsDataURL(file);
-}
-
-function clearUploadedBg(){
-  S.uploadedBgBase64=null;
-  if(S.customTheme)delete S.customTheme.uploadedBgBase64;
-  document.getElementById('upbgThumb').style.display='none';
-  document.getElementById('upbgThumb').src='';
-  document.getElementById('upbgBtn').classList.remove('loaded');
-  document.getElementById('upbgBtn').innerHTML='📁 이미지 직접 업로드';
-  document.getElementById('upbgClr').style.display='none';
-  document.getElementById('upbgFile').value='';
-  refresh();
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   ✏️ 인라인 문구 편집 패널
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-const EDIT_TABS={
-  banner:{label:'배너',fields:[
-    {key:'bannerTitle',label:'메인 제목',multi:false},
-    {key:'bannerSub',label:'서브 키워드',multi:false},
-    {key:'bannerLead',label:'리드 문구',multi:true},
-    {key:'ctaCopy',label:'버튼 텍스트',multi:false},
-  ]},
-  intro:{label:'강사 소개',fields:[
-    {key:'introTitle',label:'소개 제목',multi:false},
-    {key:'introDesc',label:'소개 본문',multi:true},
-    {key:'introBio',label:'약력',multi:true},
-  ]},
-  why:{label:'이유',fields:[
-    {key:'whyTitle',label:'섹션 제목',multi:false},
-    {key:'whySub',label:'서브 설명',multi:false},
-  ]},
-  curriculum:{label:'커리큘럼',fields:[
-    {key:'curriculumTitle',label:'커리큘럼 제목',multi:false},
-    {key:'curriculumSub',label:'설명',multi:false},
-  ]},
-  cta:{label:'CTA',fields:[
-    {key:'ctaTitle',label:'CTA 제목',multi:true},
-    {key:'ctaSub',label:'CTA 서브',multi:false},
-    {key:'ctaBadge',label:'뱃지 텍스트',multi:false},
-  ]},
-  reviews:{label:'수강평',fields:[
-    {key:'_review0',label:'수강평 1',multi:true,arrayPath:['reviews',0,0]},
-    {key:'_review1',label:'수강평 2',multi:true,arrayPath:['reviews',1,0]},
-    {key:'_review2',label:'수강평 3',multi:true,arrayPath:['reviews',2,0]},
-    {key:'_review3',label:'수강평 4',multi:true,arrayPath:['reviews',3,0]},
-  ]},
-};
-
-let editCurrentTab='banner';
-
-function renderEditPanel(){
-  if(!S.customCopy){
-    document.getElementById('editTabs').innerHTML='';
-    document.getElementById('editBody').innerHTML='<div class="edit-empty">AI로 문구를 생성하면<br>여기서 직접 수정할 수 있습니다</div>';
-    return;
-  }
-  // Render tabs
-  document.getElementById('editTabs').innerHTML=Object.entries(EDIT_TABS).map(([id,t])=>
-    `<button class="edit-tab ${id===editCurrentTab?'on':''}" onclick="switchEditTab('${id}')">${t.label}</button>`
-  ).join('');
-  // Render fields
-  renderEditFields();
-}
-
-function switchEditTab(id){
-  editCurrentTab=id;
-  renderEditPanel();
-}
-
-function renderEditFields(){
-  const tab=EDIT_TABS[editCurrentTab];
-  if(!tab)return;
-  const cp=S.customCopy||{};
-  let html=tab.fields.map(f=>{
-    let val='';
-    if(f.arrayPath){
-      // Drill into nested array
-      const [arr,idx,subIdx]=f.arrayPath;
-      val=(cp[arr]&&cp[arr][idx]&&cp[arr][idx][subIdx])||'';
-    } else {
-      val=cp[f.key]||'';
-    }
-    const tag=f.multi?'textarea':'input';
-    const extra=f.multi?`rows="2"`:'';
-    return `<div class="edit-field">
-      <div class="edit-flbl">${f.label}</div>
-      <${tag} class="edit-finp" id="ef-${f.key}" ${extra} placeholder="${f.label}...">${f.multi?val:''}</${tag}>
-      ${!f.multi?`<script>document.getElementById('ef-${f.key}').value=${JSON.stringify(val)}<\/script>`:''}
-    </div>`;
-  }).join('');
-  html+=`<button class="edit-apply" onclick="applyEditFields()">✓ 변경사항 적용</button>
-  <div class="edit-hint">변경 후 '적용' 클릭 → 프리뷰 즉시 반영</div>`;
-  document.getElementById('editBody').innerHTML=html;
-  // Set textarea values
-  tab.fields.filter(f=>f.multi).forEach(f=>{
-    const el=document.getElementById(`ef-${f.key}`);
-    if(!el)return;
-    let val='';
-    if(f.arrayPath){
-      const [arr,idx,subIdx]=f.arrayPath;
-      val=(S.customCopy[arr]&&S.customCopy[arr][idx]&&S.customCopy[arr][idx][subIdx])||'';
-    } else {
-      val=S.customCopy[f.key]||'';
-    }
-    el.value=val;
-    autoH(el);
-    el.addEventListener('input',()=>autoH(el));
-  });
-}
-
-function applyEditFields(){
-  const tab=EDIT_TABS[editCurrentTab];
-  if(!tab||!S.customCopy)return;
-  if(!S.customCopy)S.customCopy={};
-  tab.fields.forEach(f=>{
-    const el=document.getElementById(`ef-${f.key}`);
-    if(!el)return;
-    const val=el.value.trim();
-    if(f.arrayPath){
-      const [arr,idx,subIdx]=f.arrayPath;
-      if(!S.customCopy[arr])S.customCopy[arr]=[];
-      if(!S.customCopy[arr][idx])S.customCopy[arr][idx]=['','',''];
-      S.customCopy[arr][idx][subIdx]=val;
-    } else {
-      if(val)S.customCopy[f.key]=val;
-    }
-  });
-  refresh();
-  showToast('✓ 문구가 적용됐습니다!');
-  autoSave();
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   💾 저장 / 불러오기
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-const STORAGE_KEY='pgb_state_v5';
-let autoSaveTimer=null;
-
-function getSerializableState(includeBase64=false){
-  // base64 이미지는 localStorage 용량(5MB) 초과 원인 → 기본 제외
-  // JSON 내보내기 때만 includeBase64=true
-  const theme=S.customTheme?{
-    name:S.customTheme.name,dark:S.customTheme.dark,
-    vars:S.customTheme.vars,fonts:S.customTheme.fonts,
-    particle:S.customTheme.particle,variant:S.customTheme.variant,
-    c1:S.customTheme.c1,ctaGradient:S.customTheme.ctaGradient,
-    extraCSS:(S.customTheme.extraCSS||'').slice(0,800), // CSS 트림
-    bgPhotoUrl:S.customTheme.bgPhotoUrl||'',
-    uploadedBgBase64:includeBase64?(S.customTheme.uploadedBgBase64||null):null,
-  }:null;
-  // customCopy에서 큰 배열만 트림
-  let copy=null;
-  if(S.customCopy){
-    copy={...S.customCopy};
-    // reviews 4개, faqs 4개 정도만 허용 (이미 그렇지만 안전장치)
-    if(copy.reviews&&copy.reviews.length>4)copy.reviews=copy.reviews.slice(0,4);
-    if(copy.faqs&&copy.faqs.length>4)copy.faqs=copy.faqs.slice(0,4);
-  }
-  return {
-    concept:S.concept,
-    name:S.name,
-    subject:S.subject,
-    purposeType:S.purposeType,
-    purpose:S.purpose,
-    target:S.target,
-    sections:S.sections,
-    customCopy:copy,
-    instructorProfile:S.instructorProfile?{
-      bio:(S.instructorProfile.bio||'').slice(0,200),
-      style:S.instructorProfile.style||'',
-      slogan:S.instructorProfile.slogan||'',
-      signatureMethods:S.instructorProfile.signatureMethods||[],
-      signatureCurriculumName:S.instructorProfile.signatureCurriculumName||'',
-    }:null,
-    customSecOn:S.customSecOn,
-    customSecContent:S.customSecContent,
-    customTheme:theme,
-    uploadedBgBase64:includeBase64?(S.uploadedBgBase64||null):null,
-    _saved:new Date().toISOString(),
-  };
-}
-
-function applySerializedState(state){
-  if(!state)return;
-  Object.assign(S,state);
-  if(state.customTheme){THEMES.custom=state.customTheme;}
-  if(state.uploadedBgBase64||state.customTheme?.uploadedBgBase64){
-    const b64=state.uploadedBgBase64||state.customTheme.uploadedBgBase64;
-    S.uploadedBgBase64=b64;
-    if(S.customTheme)S.customTheme.uploadedBgBase64=b64;
-    const thumb=document.getElementById('upbgThumb');
-    if(thumb){thumb.src=b64;thumb.style.display='block';}
-    const btn=document.getElementById('upbgBtn');
-    if(btn){btn.classList.add('loaded');btn.innerHTML='✓ 저장된 배경 이미지 있음';}
-    document.getElementById('upbgClr').style.display='';
-  }
-  renderCG();renderSL();refresh();
-  renderEditPanel();
-  if(S.customTheme)document.getElementById('custBadge').style.display='inline';
-}
-
-function saveStateLocal(){
-  try{
-    const state=getSerializableState(false);
-    const json=JSON.stringify(state);
-    localStorage.setItem(STORAGE_KEY,json);
-    const dot=document.getElementById('autosaveDot');
-    const lbl=document.getElementById('autosaveLabel');
-    if(dot)dot.classList.add('saved');
-    if(lbl)lbl.textContent=`마지막 저장: ${new Date().toLocaleTimeString('ko-KR')}`;
-    setTimeout(()=>dot&&dot.classList.remove('saved'),2000);
-    showToast('💾 저장됐습니다!');
-  }catch(e){
-    console.error('Save failed:',e);
-    if(e.name==='QuotaExceededError'){
-      try{
-        localStorage.removeItem(STORAGE_KEY);
-        localStorage.setItem(STORAGE_KEY,JSON.stringify(getSerializableState(false)));
-        showToast('💾 저장됐습니다! (이전 저장 교체)');
-      }catch(e2){showToast('⚠ 용량 부족 — JSON 내보내기를 이용하세요');}
-    }else{showToast('⚠ 저장 실패: '+e.message);}
-  }
-}
-
-function loadStateLocal(){
-  try{
-    const raw=localStorage.getItem(STORAGE_KEY);
-    if(!raw){showToast('⚠ 저장된 상태가 없습니다');return;}
-    const state=JSON.parse(raw);
-    applySerializedState(state);
-    const savedAt=state._saved?new Date(state._saved).toLocaleString('ko-KR'):'알 수 없음';
-    document.getElementById('autosaveLabel').textContent=`불러옴: ${savedAt}`;
-    showToast(`📂 상태가 복원됐습니다 (${savedAt})`);
-  }catch(e){console.error('Load failed:',e);showToast('⚠ 불러오기 실패: '+e.message);}
-}
-
-function exportStateJSON(){
-  try{
-    const state=getSerializableState(true);
-    const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
-    const a=document.createElement('a');
-    a.href=URL.createObjectURL(blob);
-    a.download=`pgbuilder_${S.name||'state'}_${new Date().toISOString().slice(0,10)}.json`;
-    a.click();
-    showToast('⬇ JSON 다운로드됐습니다! (배경이미지 포함)');
-  }catch(e){showToast('⚠ 내보내기 실패: '+e.message);}
-}
-
-function importStateJSON(inp){
-  if(!inp.files[0])return;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    try{
-      const state=JSON.parse(e.target.result);
-      applySerializedState(state);
-      showToast('⬆ JSON 불러오기 완료!');
-      inp.value='';
-    }catch(err){showToast('⚠ JSON 파싱 오류: '+err.message);}
-  };
-  reader.readAsText(inp.files[0]);
-}
-
-// 자동 저장 (변경 3초 후)
-function autoSave(){
-  clearTimeout(autoSaveTimer);
-  autoSaveTimer=setTimeout(()=>{
-    try{
-      const json=JSON.stringify(getSerializableState(false));
-      if(json.length<4*1024*1024){
-        localStorage.setItem(STORAGE_KEY,json);
-        const lbl=document.getElementById('autosaveLabel');
-        if(lbl)lbl.textContent=`자동저장: ${new Date().toLocaleTimeString('ko-KR')}`;
-      }
-    }catch(e){
-      // 용량 초과 시 조용히 실패 (toast 없음)
-      console.warn('AutoSave failed:',e.message);
-    }
-  },3000);
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   BASE64 배경 이미지 → secBanner 통합
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-// (업로드된 Base64 이미지를 getT()에서 참조할 수 있도록 패치)
-const _origGetT=getT;
-// getT is already defined above; we patch bgPhotoUrl resolution here
-function resolveHeroBg(T){
-  // Priority: 1) uploaded base64  2) bgPhotoUrl (loremflickr)  3) none
-  if(S.uploadedBgBase64)return S.uploadedBgBase64;
-  if(T.uploadedBgBase64)return T.uploadedBgBase64;
-  if(T.bgPhotoUrl)return T.bgPhotoUrl;
-  return '';
-}
-
-/* ── DEVICE PREVIEW TOGGLE ── */
-function setDevice(mode){
-  const df=document.getElementById('df');
-  const wrap=document.getElementById('pvwrap');
-  const btnDesk=document.getElementById('dvDesk');
-  const btnMob=document.getElementById('dvMob');
-  if(mode==='mobile'){
-    df.classList.add('mobile-view');
-    wrap.classList.add('mobile-mode');
-    btnDesk.classList.remove('on');
-    btnMob.classList.add('on');
-  } else {
-    df.classList.remove('mobile-view');
-    wrap.classList.remove('mobile-mode');
-    btnDesk.classList.add('on');
-    btnMob.classList.remove('on');
-  }
-}
-
-/* ── INIT ── */
-S.sections=JSON.parse(JSON.stringify(SECTIONS_CURRICULUM));
-document.getElementById('phint').textContent=PURPOSE_HINTS.curriculum;
-
-// 저장된 상태 자동 복원
-(()=>{
-  try{
-    const raw=localStorage.getItem(STORAGE_KEY);
-    if(raw){
-      const state=JSON.parse(raw);
-      applySerializedState(state);
-      document.getElementById('autosaveLabel').textContent=
-        `자동복원: ${state._saved?new Date(state._saved).toLocaleTimeString('ko-KR'):''}`;
-      return; // applySerializedState calls renderCG/renderSL/refresh
-    }
-  }catch(e){console.warn('Auto-restore failed:',e);}
-  renderCG();renderSL();refresh();
-  renderEditPanel();
-})();
-
-// API 키 UI 초기화
-initApiKeyUI();
-(()=>{
-  if(location.protocol==='file:'){
-    const w=document.getElementById('fileProtocolWarn');
-    if(w) w.style.display='block';
-    const st=document.getElementById('apikeyStatus');
-    if(st){st.className='apikey-status err';st.textContent='⚠ 로컬 파일 — AI 기능 비활성화';}
-  }
-})();
-
-// URL Hash에서 공유 상태 복원
-if(location.hash.includes('#state='))restoreFromHash();
-
-// refresh에 autoSave + editPanel 훅 삽입 (누락되었던 부분 완벽 복구)
-const _origRefresh = refresh;
-refresh = function() {
-  _origRefresh();
-  autoSave();
-  renderEditPanel();
-};
-
-// autoSave on state changes
-['iName','iSubject','iPurpose'].forEach(id=>{
-  const el=document.getElementById(id);
-  if(el)el.addEventListener('input', ()=>autoSave());
-});
-</script>
-</body>
-</html>
