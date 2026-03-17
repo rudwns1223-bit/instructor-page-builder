@@ -1620,25 +1620,44 @@ async function callClaude(prompt, system, useSearch, maxTokens=3000){
     if(sysContent.trim()) messages.push({role:'system',content:sysContent});
     messages.push({role:'user',content:useSearch?prompt+'\n\n(If specific info unavailable, use plausible Korean education copy.)':prompt});
     let lastErr=null;
+    const attempts=[];
     for(const model of OR_MODELS){
       const reqBody={model,messages,max_tokens:maxTokens,temperature:0.7};
       if(!useSearch) reqBody.response_format={type:'json_object'};
       let orRes;
       try{ orRes=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${apiKey}`,'HTTP-Referer':location.origin||'https://localhost','X-Title':'Instructor Page Builder'},body:JSON.stringify(reqBody)}); }
-      catch(err){ lastErr=new Error('NETWORK_ERROR'); continue; }
+      catch(err){
+        lastErr=new Error('NETWORK_ERROR');
+        attempts.push(`- ${model}: NETWORK_ERROR`);
+        continue;
+      }
       if(!orRes.ok){
         const d=await orRes.json().catch(()=>({}));
         const m=d.error?.message||`HTTP ${orRes.status}`;
-        lastErr=new Error(`HTTP ${orRes.status} (OpenRouter/${model}): ${m}`);
+        let msg=`HTTP ${orRes.status} (OpenRouter/${model}): ${m}`;
+        // OpenRouter free 모델에서 가끔 "No endpoints found"가 뜨는 경우가 있어 힌트 추가
+        if(orRes.status===404 && /no endpoints found/i.test(m)){
+          msg+=` (힌트: 해당 모델 무료 엔드포인트가 현재 비활성/미지원일 수 있습니다)`;
+        }
+        lastErr=new Error(msg);
+        attempts.push(`- ${model}: HTTP ${orRes.status} — ${m}`);
         // 인증/권한 문제는 모델 바꿔도 해결 안 되므로 즉시 종료
         if(orRes.status===401||orRes.status===403) throw lastErr;
         continue;
       }
       const orData=await orRes.json(); const orText=orData.choices?.[0]?.message?.content;
-      if(!orText){ lastErr=new Error('OpenRouter 응답 비어있음'); continue; }
+      if(!orText){
+        lastErr=new Error(`HTTP 200 (OpenRouter/${model}): 응답 비어있음`);
+        attempts.push(`- ${model}: HTTP 200 — 응답 비어있음`);
+        continue;
+      }
       return orText; // 성공
     }
-    throw lastErr||new Error('OPENROUTER_ALL_FAILED');
+    if(lastErr){
+      const tried=attempts.length?`\n\nTried models:\n${attempts.join('\n')}`:'';
+      throw new Error(`${lastErr.message}${tried}`);
+    }
+    throw new Error('OPENROUTER_ALL_FAILED');
   }
 
   // ── 메인 로직: 사용자가 선택한 provider만 1회 시도 ──
