@@ -1585,9 +1585,8 @@ async function callClaude(prompt, system, useSearch, maxTokens=3000){
 
   // OpenRouter 무료 모델 우선순위 배열 (최신→폴백 순)
   const OR_MODELS = [
-    'google/gemini-2.0-flash-lite-preview-02-05:free',
-    'mistralai/mistral-7b-instruct:free',
-    'meta-llama/llama-3.2-3b-instruct:free',
+    'meta-llama/llama-3-8b-instruct:free',
+    'google/gemma-2-9b-it:free',
   ];
 
   // ── Gemini 호출 내부 함수 ─────────────────────────────────
@@ -1602,8 +1601,11 @@ async function callClaude(prompt, system, useSearch, maxTokens=3000){
     let res;
     try{ res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}); }
     catch(err){ throw new Error('NETWORK_ERROR'); }
-    if(res.status===429) throw new Error('429_GEMINI');
-    if(!res.ok){ const d=await res.json().catch(()=>({})); const m=d.error?.message||`HTTP ${res.status}`; if(res.status===400) throw new Error(`요청 오류: ${m}`); if(res.status===401||res.status===403) throw new Error('API 키 인증 실패 — Gemini 키를 확인해주세요'); throw new Error(m); }
+    if(!res.ok){
+      const d=await res.json().catch(()=>({}));
+      const m=d.error?.message||`HTTP ${res.status}`;
+      throw new Error(`HTTP ${res.status} (Gemini): ${m}`);
+    }
     const data=await res.json(); const candidate=data.candidates?.[0];
     if(!candidate||!candidate.content||!candidate.content.parts){ if(candidate?.finishReason==='SAFETY') throw new Error('안전 필터 차단'); throw new Error('Gemini 응답 형식 오류'); }
     const textPart=candidate.content.parts.find(p=>typeof p.text==='string');
@@ -1624,9 +1626,14 @@ async function callClaude(prompt, system, useSearch, maxTokens=3000){
       let orRes;
       try{ orRes=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${apiKey}`,'HTTP-Referer':location.origin||'https://localhost','X-Title':'Instructor Page Builder'},body:JSON.stringify(reqBody)}); }
       catch(err){ lastErr=new Error('NETWORK_ERROR'); continue; }
-      if(orRes.status===429){ lastErr=new Error('429_OPENROUTER'); continue; }
-      if(orRes.status===401||orRes.status===403) throw new Error('API 키 인증 실패 — OpenRouter 키를 확인해주세요');
-      if(!orRes.ok){ const d=await orRes.json().catch(()=>({})); lastErr=new Error(d.error?.message||`HTTP ${orRes.status}`); continue; }
+      if(!orRes.ok){
+        const d=await orRes.json().catch(()=>({}));
+        const m=d.error?.message||`HTTP ${orRes.status}`;
+        lastErr=new Error(`HTTP ${orRes.status} (OpenRouter/${model}): ${m}`);
+        // 인증/권한 문제는 모델 바꿔도 해결 안 되므로 즉시 종료
+        if(orRes.status===401||orRes.status===403) throw lastErr;
+        continue;
+      }
       const orData=await orRes.json(); const orText=orData.choices?.[0]?.message?.content;
       if(!orText){ lastErr=new Error('OpenRouter 응답 비어있음'); continue; }
       return orText; // 성공
@@ -1634,64 +1641,9 @@ async function callClaude(prompt, system, useSearch, maxTokens=3000){
     throw lastErr||new Error('OPENROUTER_ALL_FAILED');
   }
 
-  // ── 메인 로직: 선택 provider 시도 → 429/실패 시 반대로 우회 ──
-  if(provider==='openrouter'){
-    try{
-      return await _callOpenRouter();
-    }catch(orErr){
-      // OpenRouter 전체 실패 → Gemini로 자동 우회
-      const isRecoverable = orErr.message==='429_OPENROUTER'||orErr.message==='OPENROUTER_ALL_FAILED'||orErr.message==='NETWORK_ERROR';
-      if(isRecoverable && apiKey){
-        showToast('🔄 OpenRouter 한도 초과 — Gemini로 자동 전환 중...',3000);
-        try{ return await _callGemini(); }catch(gemFallback){ /* Gemini도 실패시 원래 OR 에러 throw */ }
-      }
-      throw orErr;
-    }
-  } else {
-    // Gemini 기본
-    try{
-      return await _callGemini();
-    }catch(gemErr){
-      // Gemini 429 → OpenRouter로 자동 우회
-      if(gemErr.message==='429_GEMINI'||gemErr.message==='NETWORK_ERROR'){
-        showRateLimit(60);
-        showToast('🔄 Gemini 한도 초과 — OpenRouter로 자동 전환 중...',3000);
-        // OpenRouter 키가 있으면 사용, 없으면 Gemini 키로 OR 시도
-        const orKey=localStorage.getItem('cak_openrouter')||sessionStorage.getItem('cak_openrouter')||apiKey;
-        if(orKey){
-          try{
-            // OR 키가 따로 있으면 그걸로, 없으면 Gemini 키로 시도
-            const savedProvider=getProvider();
-            // Temporarily use OR key
-            const _origGetKey=getApiKey;
-            try{ return await _callOpenRouterWithKey(orKey); }
-            catch(orFallback){ /* 둘 다 실패 */ }
-          }catch(e2){}
-        }
-        throw gemErr;
-      }
-      throw gemErr;
-    }
-  }
-
-  // OR 우회용 (다른 키로 호출 가능하도록 별도 함수)
-  async function _callOpenRouterWithKey(key){
-    const messages=[];
-    const sysContent=(system||'')+JSON_ENFORCE;
-    if(sysContent.trim()) messages.push({role:'system',content:sysContent});
-    messages.push({role:'user',content:useSearch?prompt+'\n\n(If info unavailable, use plausible Korean education copy.)':prompt});
-    for(const model of OR_MODELS){
-      const reqBody={model,messages,max_tokens:maxTokens,temperature:0.7};
-      if(!useSearch) reqBody.response_format={type:'json_object'};
-      let orRes;
-      try{ orRes=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${key}`,'HTTP-Referer':location.origin||'https://localhost','X-Title':'Instructor Page Builder'},body:JSON.stringify(reqBody)}); }
-      catch(err){ continue; }
-      if(!orRes.ok) continue;
-      const orData=await orRes.json(); const orText=orData.choices?.[0]?.message?.content;
-      if(orText) return orText;
-    }
-    throw new Error('OPENROUTER_ALL_FAILED');
-  }
+  // ── 메인 로직: 사용자가 선택한 provider만 1회 시도 ──
+  if(provider==='openrouter') return await _callOpenRouter();
+  return await _callGemini();
 }/* ── 파티클 컨셉 매핑 (petals 오남용 방지) ── */
 function sanitizeParticle(aiParticle, mood, seedParticle){
   // Seed overrides AI when explicitly set
@@ -2737,13 +2689,13 @@ function translateError(msg){
      msg.toLowerCase().includes('networkerror')||
      msg.toLowerCase().includes('load failed'))
     return '🌐 네트워크 오류 — 인터넷 연결 확인 후 잠시 후 다시 시도해주세요.';
-  if(msg==='429_GEMINI') return '⏳ Gemini 분당 한도 초과 — 1분 후 재시도하거나 🟣 OpenRouter로 전환하세요.';
-  if(msg==='429_OPENROUTER') return '⏳ OpenRouter 한도 초과 — 잠시 후 재시도해주세요.';
-  if(msg.includes('429')) return '⏳ 요청 한도 초과 — 1분 후 재시도하거나 🟣 OpenRouter로 전환하세요.';
+  // HTTP 상태/원인은 그대로 노출 (429/401/403 등)
+  if(/^HTTP\s+\d+/.test(msg)) return msg;
+  if(msg.includes('429')) return `HTTP 429: ${msg}`;
   if(msg.includes('credit')||msg.includes('balance')||msg.includes('billing')||msg.includes('quota'))
     return '💳 크레딧/할당량 부족 — aistudio.google.com 또는 openrouter.ai에서 확인하세요.';
   if(msg.includes('인증 실패')||msg.includes('401')||msg.includes('403'))
-    return '🔑 API 키 오류 — 좌측 상단에서 키를 다시 입력해주세요.';
+    return `🔑 인증/권한 오류: ${msg}`;
   if(msg.includes('안전 필터')) return '🛡 안전 필터 차단 — 다른 표현으로 다시 시도해주세요.';
   return msg;
 }
